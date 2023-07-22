@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+
 export default function Home() {
   return (
 
@@ -111,7 +112,25 @@ export default function Home() {
         </a>
       </div>
 
-      <div class="card-container">
+      <div class='max-w-md mx-auto'>
+    <div class="relative flex items-center w-full h-12 rounded-md shadow-sm focus-within:shadow-lg bg-white overflow-hidden">
+        <div class="grid place-items-center h-full w-12 text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </div>
+
+        <input
+        class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+        type="text"
+        id="search"
+        placeholder="What's your fix?" /> 
+    </div>
+</div>
+
+<p>.</p>
+
+      <div class="card-container shadow-md">
       <Image
               src="/dd-logo.svg"
               alt="Dilli Daaru"
@@ -120,6 +139,7 @@ export default function Home() {
               height={24}
               priority
             />
+
       <div class="section-title">SOFT</div>
       <div class="option"><input type="checkbox" id="wine" value="wine"/><label for="wine">Wine</label></div>
       <div class="option"><input type="checkbox" id="beer" value="beer"/><label for="beer">Beer</label></div>
@@ -142,6 +162,8 @@ export default function Home() {
       <button>DESELECT ALL</button>
       
       </div>
+
+
 
 
     </main>
