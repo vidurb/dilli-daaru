@@ -2,6 +2,8 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
+
+
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
@@ -108,6 +110,40 @@ export default function Home() {
           </p>
         </a>
       </div>
+
+      <div class="card-container">
+      <Image
+              src="/dd-logo.svg"
+              alt="Dilli Daaru"
+              className="dark:invert"
+              width={100}
+              height={24}
+              priority
+            />
+      <div class="section-title">SOFT</div>
+      <div class="option"><input type="checkbox" id="wine" value="wine"/><label for="wine">Wine</label></div>
+      <div class="option"><input type="checkbox" id="beer" value="beer"/><label for="beer">Beer</label></div>
+      <div class="option"><input type="checkbox" id="alcopop" value="alcopop"/><label for="alcopop">Alcopop</label></div>
+      <div class="option"><input type="checkbox" id="cider" value="cider"/><label for="cider">Cider</label></div>
+
+      <div class="section-title">HARD</div>
+      <div class="option"><input type="checkbox" id="gin" value="gin"/><label for="gin">Gin</label></div>
+      <div class="option"><input type="checkbox" id="whiskey" value="whiskey"/><label for="whiskey">Whiskey</label></div>
+      <div class="option"><input type="checkbox" id="vodka" value="vodka"/><label for="vodka">Vodka</label></div>
+      <div class="option"><input type="checkbox" id="rum" value="rum"/><label for="rum">Rum</label></div>
+      <div class="option"><input type="checkbox" id="tequila" value="tequila"/><label for="tequila">Tequila</label></div>
+      <div class="option"><input type="checkbox" id="brandy" value="brandy"/><label for="brandy">Brandy</label></div>
+
+      <div class="section-title">OTHER</div>
+      <div class="option"><input type="checkbox" id="liqueur" value="liqueur"/><label for="liqueur">Liqueur</label></div>
+      <div class="option"><input type="checkbox" id="misc" value="misc"/><label for="misc">Misc</label></div>
+      
+      <button>SELECT ALL</button>
+      <button>DESELECT ALL</button>
+      
+      </div>
+
+
     </main>
   )
 }
