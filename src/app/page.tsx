@@ -11,7 +11,7 @@ export default function Home() {
       <Image
               src="/dd-logo.svg"
               alt="Dilli Daaru"
-              className="dark:invert"
+              className="dark:invert pb-4"
               width={160}
               height={24}
               priority
@@ -56,7 +56,7 @@ export default function Home() {
         placeholder="What's your fix?" /> 
     </div>
 
-    <div class="bg-white px-4 py-4 rounded shadow-md flex m-2">
+    <div class="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
     <Image
               src="/beer.svg"
               alt="beer"
@@ -68,11 +68,75 @@ export default function Home() {
 
             <div>
               <div class="text-lg pb-1.5 leading-6">BREWHOLIK SMOKE PREMIUM STRONG BEER</div>
-              <div class="bg-amber-900 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">BEER</div><div class="text-slate-500 inline pl-3">3 thekas</div>
+              <div class="bg-amber-900 text-white rounded inline-block px-2 py-1 mb-0.5 font-extrabold text-sm">BEER</div><div class="text-slate-500 inline pl-3">3 thekas</div>
             </div>
     </div>
 
-    <div class="bg-white px-4 py-4 rounded shadow-md flex m-2">
+    <div class="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
+    <Image
+              src="/wine.svg"
+              alt="beer"
+              className="border rounded border-solid border-slate-300 inline mr-4"
+              width={64}
+              height={64}
+              priority
+            />
+
+            <div>
+              <div class="text-lg pb-1.5 leading-6">SULA DINDORI RESERVE CHARDONNAY</div>
+              <div class="bg-purple-700 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">WINE</div><div class="text-slate-500 inline pl-3">3 thekas</div>
+            </div>
+    </div>
+
+    <div class="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
+    <Image
+              src="/gin.svg"
+              alt="gin"
+              className="border rounded border-solid border-slate-300 inline mr-4"
+              width={64}
+              height={64}
+              priority
+            />
+
+            <div>
+              <div class="text-lg pb-1.5 leading-6">GREATER THAN BROKEN BAT</div>
+              <div class="bg-cyan-500 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">GIN</div><div class="text-slate-500 inline pl-3">12 thekas</div>
+            </div>
+    </div>
+
+    <div class="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
+    <Image
+              src="/whiskey.svg"
+              alt="whiskey"
+              className="border rounded border-solid border-slate-300 inline mr-4"
+              width={64}
+              height={64}
+              priority
+            />
+
+            <div>
+              <div class="text-lg pb-1.5 leading-6">SULA DINDORI RESERVE CHARDONNAY</div>
+              <div class="bg-orange-950 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">WHISKEY</div><div class="text-slate-500 inline pl-3">Currently Unavailable</div>
+            </div>
+    </div>
+
+    <div class="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
+    <Image
+              src="/alcopop.svg"
+              alt="alcopop"
+              className="border rounded border-solid border-slate-300 inline mr-4"
+              width={64}
+              height={64}
+              priority
+            />
+
+            <div>
+              <div class="text-lg pb-1.5 leading-6">BACARDI BREEZER JAMAICAN PASSION</div>
+              <div class="bg-pink-500 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">ALCOPOP</div><div class="text-slate-500 inline pl-3">3 thekas</div>
+            </div>
+    </div>
+
+    <div class="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
     <Image
               src="/wine.svg"
               alt="beer"
