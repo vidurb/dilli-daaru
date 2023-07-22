@@ -116,7 +116,7 @@ export default function Home() {
               src="/dd-logo.svg"
               alt="Dilli Daaru"
               className="dark:invert"
-              width={100}
+              width={160}
               height={24}
               priority
             />
