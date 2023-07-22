@@ -1,0 +1,65 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  schemas   = ["public"]
+}
+
+enum ProductType {
+  IMPORTED
+  INDIAN
+  COUNTRY
+
+  @@schema("public")
+}
+
+enum ProductCategory {
+  BEER
+  WINE
+  CIDER
+  ALCOPOP
+  WHISKEY
+  VODKA
+  GIN
+  RUM
+  TEQUILA
+  BRANDY
+
+  @@schema("public")
+}
+
+enum Entity {
+  DSIIDC
+  DCCWS
+  DSCSC
+
+  @@schema("public")
+}
+
+model Vendor {
+  id           String        @id @default(uuid())
+  externalId   String        @unique
+  name         String
+  address      String
+  productTypes ProductType[]
+  entity       Entity
+
+  @@schema("public")
+}
+
+model Product {
+  id          String          @id @default(uuid())
+  externalKey Int             @unique
+  externalId  String          @unique
+  name        String
+  image       String?
+  type        ProductType
+  category    ProductCategory
+
+  @@schema("public")
+}
