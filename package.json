@@ -13,7 +13,8 @@
     "db:studio": "dotenv -e .env.local prisma studio",
     "db:generate": "dotenv -e .env.local prisma generate",
     "db:migrate:reset": "dotenv -e .env.local prisma migrate reset",
-    "db:migrate:dev": "dotenv -e .env.local prisma migrate dev"
+    "db:migrate:dev": "dotenv -e .env.local prisma migrate dev",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@prisma/client": "5.0.0",
