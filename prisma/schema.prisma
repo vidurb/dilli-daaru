@@ -29,6 +29,8 @@ enum ProductCategory {
   RUM
   TEQUILA
   BRANDY
+  OTHER
+  LIQUEUR
 
   @@schema("public")
 }
@@ -37,6 +39,7 @@ enum Entity {
   DSIIDC
   DCCWS
   DSCSC
+  DTTDC
 
   @@schema("public")
 }
@@ -55,11 +58,12 @@ model Vendor {
 model Product {
   id          String          @id @default(uuid())
   externalKey Int             @unique
-  externalId  String          @unique
+  externalId  String
   name        String
   image       String?
   type        ProductType
   category    ProductCategory
+  mrp         Int
 
   @@schema("public")
 }
