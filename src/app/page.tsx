@@ -1,10 +1,11 @@
 import Image from 'next/image'
-import {getRandomProducts} from "@/lib/db";
+import {ProductCategory} from "@prisma/client";
+import {getRandomProducts, prisma} from "@/lib/db";
 import {ProductCard} from "@/components";
 
 
 export default async function Home() {
-    const homepageProducts = await getRandomProducts(5)
+    const products = await prisma.product.findMany()
     return (
 
 
@@ -21,29 +22,29 @@ export default async function Home() {
                 />
 
                 <div className="section-title">SOFT</div>
-                <div className="option"><input type="checkbox" id="wine" value="wine"/><label htmlFor="wine">Wine</label></div>
-                <div className="option"><input type="checkbox" id="beer" value="beer"/><label htmlFor="beer">Beer</label></div>
-                <div className="option"><input type="checkbox" id="alcopop" value="alcopop"/><label
+                <div className="option"><input type="checkbox" id={ProductCategory.WINE} value={ProductCategory.WINE} defaultChecked={true}/><label htmlFor="wine">Wine</label></div>
+                <div className="option"><input type="checkbox" id="beer" value="beer" defaultChecked={true}/><label htmlFor="beer">Beer</label></div>
+                <div className="option"><input type="checkbox" id="alcopop" value="alcopop" defaultChecked={true}/><label
                     htmlFor="alcopop">Alcopop</label></div>
-                <div className="option"><input type="checkbox" id="cider" value="cider"/><label htmlFor="cider">Cider</label>
+                <div className="option"><input type="checkbox" id="cider" value="cider" defaultChecked={true}/><label htmlFor="cider">Cider</label>
                 </div>
 
                 <div className="section-title">HARD</div>
-                <div className="option"><input type="checkbox" id="gin" value="gin"/><label htmlFor="gin">Gin</label></div>
-                <div className="option"><input type="checkbox" id="whiskey" value="whiskey"/><label
+                <div className="option"><input type="checkbox" id="gin" value="gin" defaultChecked={true}/><label htmlFor="gin">Gin</label></div>
+                <div className="option"><input type="checkbox" id="whiskey" value="whiskey" defaultChecked={true}/><label
                     htmlFor="whiskey">Whiskey</label></div>
-                <div className="option"><input type="checkbox" id="vodka" value="vodka"/><label htmlFor="vodka">Vodka</label>
+                <div className="option"><input type="checkbox" id="vodka" value="vodka" defaultChecked={true}/><label htmlFor="vodka">Vodka</label>
                 </div>
-                <div className="option"><input type="checkbox" id="rum" value="rum"/><label htmlFor="rum">Rum</label></div>
-                <div className="option"><input type="checkbox" id="tequila" value="tequila"/><label
+                <div className="option"><input type="checkbox" id="rum" value="rum" defaultChecked={true}/><label htmlFor="rum">Rum</label></div>
+                <div className="option"><input type="checkbox" id="tequila" value="tequila" defaultChecked={true}/><label
                     htmlFor="tequila">Tequila</label></div>
-                <div className="option"><input type="checkbox" id="brandy" value="brandy"/><label
+                <div className="option"><input type="checkbox" id="brandy" value="brandy" defaultChecked={true}/><label
                     htmlFor="brandy">Brandy</label></div>
 
                 <div className="section-title">OTHER</div>
-                <div className="option"><input type="checkbox" id="liqueur" value="liqueur"/><label
+                <div className="option"><input type="checkbox" id="liqueur" value="liqueur" defaultChecked={true}/><label
                     htmlFor="liqueur">Liqueur</label></div>
-                <div className="option"><input type="checkbox" id="misc" value="misc"/><label htmlFor="misc">Misc</label></div>
+                <div className="option"><input type="checkbox" id="other" value="other" defaultChecked={true}/><label htmlFor="other">Other</label></div>
 
                 <button>SELECT ALL</button>
                 <button>DESELECT ALL</button>
@@ -69,7 +70,7 @@ export default async function Home() {
                         placeholder="What's your fix?"/>
 
                 </div>
-                {homepageProducts.map((product) => ProductCard({product}))}
+                {products.map((product) => ProductCard({product}))}
             </div>
         </main>
     )
