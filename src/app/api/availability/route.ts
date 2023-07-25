@@ -5,10 +5,6 @@ import {Product} from "@prisma/client";
 import {NextRequest, NextResponse} from 'next/server';
 import {translator} from "@/lib";
 
-export interface AvailabilityRequest {
-    productId: string;
-}
-
 async function fetchAndUpdateVendors(product: Product) {
     const apiVendors: ExciseApiVendor[] = await fetch(createVendorsByProductRequest(product)).then(r => r.json())
     const vendorsIds = apiVendors.map((v) => v.vendId)
