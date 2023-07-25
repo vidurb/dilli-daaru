@@ -1,7 +1,7 @@
 import {PrismaClient, Product, Vendor, ProductType, ProductCategory} from '@prisma/client'
 import brands from '../brands_21_07_23.json' assert {type: "json"}
 import vendors from '../vendors_21_07_23.json' assert {type: "json"}
-import {ExciseApiBrand, ExciseApiVendor} from "../src/types";
+import {ExciseApiBrand, ExciseApiVendor} from "../src/lib/excise-api";
 
 
 const prisma = new PrismaClient()
@@ -37,6 +37,7 @@ async function main() {
                 type: typeMap[brand.liquorType],
                 category: categoryMap[brand.liquorCategory],
                 mrp: brand.mrp,
+                vendorsUpdatedAt: null
             }
         })
     })

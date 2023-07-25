@@ -53,24 +53,24 @@ model Vendor {
   entity       Entity
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
-  vendors      Product[]
+  products     Product[]
 
   @@schema("public")
 }
 
 model Product {
-  id                    String          @id @default(uuid())
-  externalKey           Int             @unique
-  externalId            String
-  name                  String
-  image                 String?
-  type                  ProductType
-  category              ProductCategory
-  mrp                   Int
-  createdAt             DateTime        @default(now())
-  updatedAt             DateTime        @updatedAt
-  availability          Vendor[]
-  availabilityUpdatedAt DateTime?
+  id               String          @id @default(uuid())
+  externalKey      Int             @unique
+  externalId       String
+  name             String
+  image            String?
+  type             ProductType
+  category         ProductCategory
+  mrp              Int
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  vendors          Vendor[]
+  vendorsUpdatedAt DateTime?
 
   @@schema("public")
 }
