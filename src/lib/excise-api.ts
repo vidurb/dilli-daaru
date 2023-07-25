@@ -11,6 +11,27 @@ export function createVendorsByProductRequest(product: Product) {
     })
 }
 
+export const typeMap: Record<ExciseApiBrand["liquorType"], ProductType> = {
+    "Indian Liquor": ProductType.INDIAN,
+    "Foreign Liquor": ProductType.IMPORTED,
+    "Country Liquor": ProductType.COUNTRY,
+}
+
+export const categoryMap: Record<ExciseApiBrand["liquorCategory"], ProductCategory> = {
+    "Alcopop": ProductCategory.ALCOPOP,
+    "Beer": ProductCategory.BEER,
+    "Brandy": ProductCategory.BRANDY,
+    "Country Liquor": ProductCategory.OTHER,
+    "Draught Beer": ProductCategory.BEER,
+    "Gin": ProductCategory.GIN,
+    "Liqueur": ProductCategory.LIQUEUR,
+    "Mixed Alcoholic Beverages": ProductCategory.ALCOPOP,
+    "Rum": ProductCategory.RUM,
+    "Vodka": ProductCategory.VODKA,
+    "Whisky": ProductCategory.WHISKEY,
+    "Wine": ProductCategory.WINE,
+}
+
 export type ExciseApiBrand = {
     brandKey: number
     brandId: string
@@ -40,26 +61,6 @@ export type ExciseApiVendor = {
     brandAvailibilty: []
 }
 
-export const typeMap: Record<ExciseApiBrand["liquorType"], ProductType> = {
-    "Indian Liquor": ProductType.INDIAN,
-    "Foreign Liquor": ProductType.IMPORTED,
-    "Country Liquor": ProductType.COUNTRY,
-}
-
-export const categoryMap: Record<ExciseApiBrand["liquorCategory"], ProductCategory> = {
-    "Alcopop": ProductCategory.ALCOPOP,
-    "Beer": ProductCategory.BEER,
-    "Brandy": ProductCategory.BRANDY,
-    "Country Liquor": ProductCategory.OTHER,
-    "Draught Beer": ProductCategory.BEER,
-    "Gin": ProductCategory.GIN,
-    "Liqueur": ProductCategory.LIQUEUR,
-    "Mixed Alcoholic Beverages": ProductCategory.ALCOPOP,
-    "Rum": ProductCategory.RUM,
-    "Vodka": ProductCategory.VODKA,
-    "Whisky": ProductCategory.WHISKEY,
-    "Wine": ProductCategory.WINE,
-}
 
 
 export function mapExciseProduct(product: ExciseApiBrand): Omit<Product, "createdAt" | "updatedAt" | "id" | "image" > {

@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "app/api/availability/route.ts": {
+      "memory": 128,
+      "maxDuration": 10
+    },
+    "app/api/sync/route.ts": {
+      "memory": 512,
+      "maxDuration": 60
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/sync",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}
