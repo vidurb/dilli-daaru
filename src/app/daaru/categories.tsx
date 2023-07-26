@@ -26,24 +26,31 @@ export default function ProductCategories({selectedCategories}: { selectedCatego
     const router = useRouter()
     const searchParams = useSearchParams()
 
-    const [categories, setCategories] = useState(selectedCategories)
+    const [categories, setCategories] = useState(new Set<ProductCategory>(selectedCategories ?? []))
 
     function handleSelect(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.checked) {
-            setCategories([...categories, e.target.value as ProductCategory])
+            const newCategories = new Set(categories)
+            newCategories.add(e.target.value as ProductCategory)
+            setCategories(newCategories)
         } else {
-            setCategories([...categories.filter((category) => category !== e.target.value as ProductCategory)])
+            const newCategories = new Set(categories)
+            newCategories.delete(e.target.value as ProductCategory)
+            setCategories(newCategories)
         }
     }
 
     useEffect(() => {
         // @ts-ignore: Next has to fix this
-        const clonedSearchParams = new URLSearchParams(searchParams)
-        for (const category of categories) {
+        const clonedSearchParams = new URLSearchParams()
+        for (const category of Array.from(categories)) {
             clonedSearchParams.append('categories', category)
         }
+        if (searchParams.has("search")) {
+            clonedSearchParams.set("search", searchParams.get("search")!)
+        }
         router.push(`/daaru?${clonedSearchParams.toString()}`)
-    }, [categories, router, searchParams])
+    }, [categories])
 
     return (
         <div className="bg-white px-12 py-12 rounded shadow-md">
@@ -58,33 +65,33 @@ export default function ProductCategories({selectedCategories}: { selectedCatego
 
             <div className="section-title">SOFT</div>
             <ProductCategorySelect category={ProductCategory.WINE} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.WINE)}/>
+                                   defaultChecked={categories.has(ProductCategory.WINE)}/>
             <ProductCategorySelect category={ProductCategory.BEER} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.BEER)}/>
+                                   defaultChecked={categories.has(ProductCategory.BEER)}/>
             <ProductCategorySelect category={ProductCategory.ALCOPOP} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.ALCOPOP)}/>
+                                   defaultChecked={categories.has(ProductCategory.ALCOPOP)}/>
             <ProductCategorySelect category={ProductCategory.CIDER} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.CIDER)}/>
+                                   defaultChecked={categories.has(ProductCategory.CIDER)}/>
             <div className="section-title">HARD</div>
             <ProductCategorySelect category={ProductCategory.GIN} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.RUM)}/>
+                                   defaultChecked={categories.has(ProductCategory.RUM)}/>
             <ProductCategorySelect category={ProductCategory.WHISKEY} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.WHISKEY)}/>
+                                   defaultChecked={categories.has(ProductCategory.WHISKEY)}/>
             <ProductCategorySelect category={ProductCategory.VODKA} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.VODKA)}/>
+                                   defaultChecked={categories.has(ProductCategory.VODKA)}/>
             <ProductCategorySelect category={ProductCategory.RUM} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.RUM)}/>
+                                   defaultChecked={categories.has(ProductCategory.RUM)}/>
             <ProductCategorySelect category={ProductCategory.TEQUILA} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.TEQUILA)}/>
+                                   defaultChecked={categories.has(ProductCategory.TEQUILA)}/>
             <ProductCategorySelect category={ProductCategory.BRANDY} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.BRANDY)}/>
+                                   defaultChecked={categories.has(ProductCategory.BRANDY)}/>
             <div className="section-title">OTHER</div>
             <ProductCategorySelect category={ProductCategory.LIQUEUR} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.LIQUEUR)}/>
+                                   defaultChecked={categories.has(ProductCategory.LIQUEUR)}/>
             <ProductCategorySelect category={ProductCategory.OTHER} handleSelect={handleSelect}
-                                   defaultChecked={categories.includes(ProductCategory.OTHER)}/>
-            <button onClick={() => {setCategories(Object.values(ProductCategory))}}>SELECT ALL</button>
-            <button onClick={() => {setCategories([])}}>DESELECT ALL</button>
+                                   defaultChecked={categories.has(ProductCategory.OTHER)}/>
+            <button onClick={() => {setCategories(new Set<ProductCategory>(Object.values(ProductCategory)))}}>SELECT ALL</button>
+            <button onClick={() => {setCategories(new Set<ProductCategory>([]))}}>DESELECT ALL</button>
 
         </div>
     )

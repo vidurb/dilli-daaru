@@ -5,16 +5,18 @@ import ProductCategories from "@/app/daaru/categories";
 import Search from "@/app/daaru/search";
 
 
-const allCategories = Object.values(ProductCategory)
+const allCategories = new Set<ProductCategory>(Object.values(ProductCategory))
 
 export default async function Daaru({searchParams: {categories, search}}: {
     searchParams: { categories: ProductCategory[], search?: string }
 }) {
-    const productCategories = Array.isArray(categories) && categories.length > 0 ? categories : Object.values(ProductCategory)
+    console.log(categories)
+    const qpCategories = new Set<ProductCategory>(categories ?? [])
+    const productCategories = qpCategories.size > 0 ? qpCategories : allCategories
     const products = await prisma.product.findMany({
         where: {
             category: {
-                in: productCategories
+                in: Array.from(productCategories)
             },
             ...(search !== undefined && {name: {search: search}})
         },

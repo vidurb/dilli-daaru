@@ -30,6 +30,7 @@
     "radash": "^11.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-loading-skeleton": "^3.3.1",
     "short-uuid": "^4.2.2",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
