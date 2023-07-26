@@ -6,7 +6,7 @@
     },
     "app/api/sync/route.ts": {
       "memory": 512,
-      "maxDuration": 60
+      "maxDuration": 10
     }
   },
   "crons": [
