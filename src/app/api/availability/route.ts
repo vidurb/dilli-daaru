@@ -29,7 +29,7 @@ export async function GET(
     const productId = request.nextUrl.searchParams.get("productId")
     if (productId) {
         const product = await prisma.product.findUnique({
-            where: {id: productId.includes('-') ? productId : translator.fromUUID(productId)},
+            where: {id: productId.includes('-') ? productId : translator.toUUID(productId)},
             include: {vendors: true}
         })
         if (product) {
