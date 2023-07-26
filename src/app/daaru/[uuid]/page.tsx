@@ -5,9 +5,8 @@ import {categoryImageMap} from "@/app/daaru/product-card";
 import {Vendor} from "@prisma/client";
 import {fetchAndUpdateVendors} from "@/app/api/availability/route";
 
-export default async function Daaru({params}: { params: { shortuuid: string } }) {
-    const uuid = translator.toUUID(params.shortuuid)
-    const product = await prisma.product.findFirstOrThrow({where: {id: uuid}})
+export default async function Daaru({params: {uuid}}: { params: { uuid: string } }) {
+    const product = await prisma.product.findFirstOrThrow({where: {id: uuid.includes('-') ? uuid : translator.toUUID(uuid)}})
     const vendors: Vendor[] = await fetchAndUpdateVendors(product)
     return (
         <main className={"flex min-h-screen flex-row items-center p-24 justify-center"}>
