@@ -1,1 +1,1 @@
-export * from './ProductCard';
+export * from '../app/daaru/product-card';

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import {ProductCategory} from "@prisma/client";
-import {useRouter} from 'next/navigation'
+import {useRouter, useSearchParams} from 'next/navigation'
 import {useEffect, useState} from "react";
 import {title} from 'radash'
 
@@ -24,6 +24,7 @@ function ProductCategorySelect({category, handleSelect, defaultChecked}: {
 
 export default function ProductCategories({selectedCategories}: { selectedCategories: ProductCategory[] }) {
     const router = useRouter()
+    const searchParams = useSearchParams()
 
     const [categories, setCategories] = useState(selectedCategories)
 
@@ -36,12 +37,13 @@ export default function ProductCategories({selectedCategories}: { selectedCatego
     }
 
     useEffect(() => {
-        const searchParams = new URLSearchParams()
+        // @ts-ignore: Next has to fix this
+        const clonedSearchParams = new URLSearchParams(searchParams)
         for (const category of categories) {
-            searchParams.append('categories', category)
+            clonedSearchParams.append('categories', category)
         }
-        router.push(`/daaru?${searchParams.toString()}`)
-    }, [categories, router])
+        router.push(`/daaru?${clonedSearchParams.toString()}`)
+    }, [categories, router, searchParams])
 
     return (
         <div className="bg-white px-12 py-12 rounded shadow-md">
@@ -81,8 +83,8 @@ export default function ProductCategories({selectedCategories}: { selectedCatego
                                    defaultChecked={categories.includes(ProductCategory.LIQUEUR)}/>
             <ProductCategorySelect category={ProductCategory.OTHER} handleSelect={handleSelect}
                                    defaultChecked={categories.includes(ProductCategory.OTHER)}/>
-            <button>SELECT ALL</button>
-            <button>DESELECT ALL</button>
+            <button onClick={() => {setCategories(Object.values(ProductCategory))}}>SELECT ALL</button>
+            <button onClick={() => {setCategories([])}}>DESELECT ALL</button>
 
         </div>
     )
