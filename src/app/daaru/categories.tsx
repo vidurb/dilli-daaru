@@ -22,7 +22,7 @@ function ProductCategorySelect({category, handleSelect, defaultChecked}: {
     )
 }
 
-export default function ProductCategories({selectedCategories}: { selectedCategories: ProductCategory[] }) {
+export default function ProductCategories({selectedCategories}: { selectedCategories: Set<ProductCategory> }) {
     const router = useRouter()
     const searchParams = useSearchParams()
 
