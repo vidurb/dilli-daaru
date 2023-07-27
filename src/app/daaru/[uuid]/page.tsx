@@ -1,5 +1,6 @@
 import { Vendor } from '@prisma/client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { fetchAndUpdateVendors } from '@/app/api/availability/route'
@@ -48,7 +49,13 @@ export default async function Daaru({
                                     className="text-slate-500 pl-3"
                                     key={vendor.id}
                                 >
-                                    {vendor.name}
+                                    <Link
+                                        href={`/thekas/${translator.fromUUID(
+                                            vendor.id
+                                        )}`}
+                                    >
+                                        {vendor.name}
+                                    </Link>
                                 </li>
                             )
                         })}
