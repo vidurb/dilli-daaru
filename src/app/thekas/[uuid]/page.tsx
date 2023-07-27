@@ -18,7 +18,10 @@ async function geocodeVendor(vendor: Vendor) {
         const place = geocodeResponse.data.results[0]
         return prisma.vendor.update({
             where: { id: vendor.id },
-            data: { gmapsPlaceId: place.place_id },
+            data: {
+                gmapsPlaceId: place.place_id,
+                location: place.geometry.location,
+            },
         })
     } else {
         return vendor
