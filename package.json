@@ -90,7 +90,6 @@
             "prettier --write"
         ],
         "schema.prisma": [
-            "prisma validate --schema",
             "prisma format --schema"
         ]
     }

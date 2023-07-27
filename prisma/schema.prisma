@@ -1,13 +1,14 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["multiSchema", "fullTextSearch"]
+  previewFeatures = ["multiSchema", "fullTextSearch", "postgresqlExtensions"]
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-  schemas   = ["public"]
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  directUrl  = env("DIRECT_URL")
+  schemas    = ["public"]
+  extensions = [postgis(version: "3.3.2"), uuidOssp(map: "uuid-ossp"), pgcrypto()]
 }
 
 enum ProductType {

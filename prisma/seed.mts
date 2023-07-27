@@ -65,7 +65,7 @@ export function mapExciseProduct(product: ExciseApiBrand): Omit<Product, "create
     }
 }
 
-export function mapExciseVendor(vendor: ExciseApiVendor): Omit<Vendor, "createdAt" | "updatedAt" | "id"> {
+export function mapExciseVendor(vendor: ExciseApiVendor): Omit<Vendor, "createdAt" | "updatedAt" | "id" | "gmapsPlaceId"> {
     const productTypes: ProductType[] = []
     if (vendor.clFlag === "Y") productTypes.push(ProductType.COUNTRY)
     if (vendor.ilFlag === "Y") productTypes.push(ProductType.IMPORTED)
