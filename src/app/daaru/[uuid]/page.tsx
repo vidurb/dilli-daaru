@@ -1,19 +1,30 @@
-import {translator} from "@/lib/uuid";
-import {prisma} from "@/lib/db";
-import Image from "next/image";
-import {categoryImageMap} from "@/app/daaru/product-card";
-import {Vendor} from "@prisma/client";
-import {fetchAndUpdateVendors} from "@/app/api/availability/route";
-import {notFound} from "next/navigation";
+import { Vendor } from '@prisma/client'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
-export default async function Daaru({params: {uuid}}: { params: { uuid: string } }) {
-    const product = await prisma.product.findUnique({where: {id: uuid.includes('-') ? uuid : translator.toUUID(uuid)}})
+import { fetchAndUpdateVendors } from '@/app/api/availability/route'
+import { categoryImageMap } from '@/app/daaru/product-card'
+import { prisma } from '@/lib/db'
+import { translator } from '@/lib/uuid'
+
+export default async function Daaru({
+    params: { uuid },
+}: {
+    params: { uuid: string }
+}) {
+    const product = await prisma.product.findUnique({
+        where: { id: uuid.includes('-') ? uuid : translator.toUUID(uuid) },
+    })
     if (!product) {
         return notFound()
     }
     const vendors: Vendor[] = await fetchAndUpdateVendors(product)
     return (
-        <main className={"flex min-h-screen flex-row items-center p-24 justify-center"}>
+        <main
+            className={
+                'flex min-h-screen flex-row items-center p-24 justify-center'
+            }
+        >
             <div className="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
                 <Image
                     src={categoryImageMap[product.category]}
@@ -24,13 +35,21 @@ export default async function Daaru({params: {uuid}}: { params: { uuid: string }
                     priority
                 />
                 <div>
-                    <div className="text-lg pb-1.5 leading-6 block">{product.name}</div>
-                    <div
-                        className="bg-purple-700 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">{product.category}</div>
-                    <ul className={"flex flex-col"}>
+                    <div className="text-lg pb-1.5 leading-6 block">
+                        {product.name}
+                    </div>
+                    <div className="bg-purple-700 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">
+                        {product.category}
+                    </div>
+                    <ul className={'flex flex-col'}>
                         {vendors.map((vendor) => {
                             return (
-                                <li className="text-slate-500 pl-3" key={vendor.id}>{vendor.name}</li>
+                                <li
+                                    className="text-slate-500 pl-3"
+                                    key={vendor.id}
+                                >
+                                    {vendor.name}
+                                </li>
                             )
                         })}
                     </ul>
