@@ -1,4 +1,4 @@
-import { Vendor } from '@prisma/client'
+import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { fetchAndUpdateVendors } from '@/app/api/availability/route'
 import { categoryImageMap } from '@/app/daaru/product-card'
 import { prisma } from '@/lib/db'
+import { areVendorsOpen } from '@/lib/utils'
 import { translator } from '@/lib/uuid'
 
 export default async function Daaru({
@@ -15,11 +16,18 @@ export default async function Daaru({
 }) {
     const product = await prisma.product.findUnique({
         where: { id: uuid.includes('-') ? uuid : translator.toUUID(uuid) },
+        include: { vendors: true },
     })
     if (!product) {
         return notFound()
     }
-    const vendors: Vendor[] = await fetchAndUpdateVendors(product)
+    const vendors =
+        product.vendorsUpdatedAt &&
+        dayjs(product.vendorsUpdatedAt).isSame(dayjs(), 'day')
+            ? product.vendors
+            : areVendorsOpen()
+            ? await fetchAndUpdateVendors(product)
+            : product.vendors
     return (
         <main
             className={

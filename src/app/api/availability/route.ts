@@ -1,5 +1,5 @@
 import { Product } from '@prisma/client'
-import { isSameDay } from 'date-fns'
+import dayjs from 'dayjs'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { translator } from '@/lib'
@@ -8,6 +8,7 @@ import {
     createVendorsByProductRequest,
     ExciseApiVendor,
 } from '@/lib/excise-api'
+import { areVendorsOpen } from '@/lib/utils'
 
 export async function fetchAndUpdateVendors(product: Product) {
     const apiVendors: ExciseApiVendor[] = await fetch(
@@ -45,15 +46,16 @@ export async function GET(request: NextRequest) {
         if (product) {
             if (
                 product.vendorsUpdatedAt &&
-                isSameDay(
-                    new Date(product.vendorsUpdatedAt),
-                    new Date(Date.now())
-                )
+                dayjs(product.vendorsUpdatedAt).isSame(dayjs(), 'day')
             ) {
                 return NextResponse.json({ vendors: product.vendors })
             } else {
-                const vendors = await fetchAndUpdateVendors(product)
-                return NextResponse.json(vendors)
+                if (areVendorsOpen()) {
+                    const vendors = await fetchAndUpdateVendors(product)
+                    return NextResponse.json(vendors)
+                } else {
+                    return NextResponse.json({ vendors: product.vendors })
+                }
             }
         } else {
             return NextResponse.json(
