@@ -54,6 +54,7 @@ model Vendor {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   products     Product[]
+  gmapsPlaceId String?
 
   @@schema("public")
 }
