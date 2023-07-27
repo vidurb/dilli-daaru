@@ -1,10 +1,9 @@
-import { Product } from '@prisma/client'
+import { Product, Vendor } from '@prisma/client'
 import { ProductCategory } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentProps } from 'react'
 
-import { createVendorsByProductRequest } from '@/lib/excise-api'
 import { translator } from '@/lib/uuid'
 
 import alcopop from '../../../public/alcopop.svg'
@@ -34,7 +33,11 @@ export const categoryImageMap: Record<
     [ProductCategory.WINE]: wine,
 }
 
-export async function ProductCard({ product }: { product: Product }) {
+export async function ProductCard({
+    product,
+}: {
+    product: Product & { vendors: Vendor[] }
+}) {
     return (
         <div className="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
             <Image
@@ -55,7 +58,9 @@ export async function ProductCard({ product }: { product: Product }) {
                 <div className="bg-purple-700 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">
                     {product.category}
                 </div>
-                {/*<div className="text-slate-500 inline pl-3">0 thekas</div>*/}
+                <div className="text-slate-500 inline pl-3">
+                    {product.vendors?.length ?? 0} thekas
+                </div>
             </div>
         </div>
     )

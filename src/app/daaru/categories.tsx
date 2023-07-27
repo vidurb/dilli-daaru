@@ -59,10 +59,10 @@ export default function ProductCategories({
         // @ts-ignore: Next has to fix this
         const clonedSearchParams = new URLSearchParams()
         for (const category of Array.from(categories)) {
-            clonedSearchParams.append('categories', category)
+            clonedSearchParams.append('c', category)
         }
-        if (searchParams.has('search')) {
-            clonedSearchParams.set('search', searchParams.get('search')!)
+        if (searchParams.has('s')) {
+            clonedSearchParams.set('s', searchParams.get('s')!)
         }
         router.push(`/daaru?${clonedSearchParams.toString()}`)
     }, [categories, router, searchParams])
