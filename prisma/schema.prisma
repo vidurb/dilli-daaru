@@ -46,17 +46,19 @@ enum Entity {
 }
 
 model Vendor {
-  id           String        @id @default(uuid())
-  externalId   String        @unique
+  id           String                           @id @default(uuid())
+  externalId   String                           @unique
   name         String
   address      String
   productTypes ProductType[]
   entity       Entity
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  createdAt    DateTime                         @default(now())
+  updatedAt    DateTime                         @updatedAt
   products     Product[]
   gmapsPlaceId String?
+  location     Unsupported("geography(POINT)")?
 
+  @@index([location], name: "location_idx", type: Gist)
   @@schema("public")
 }
 
