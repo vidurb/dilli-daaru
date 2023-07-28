@@ -10,9 +10,11 @@ const allCategories = new Set<ProductCategory>(Object.values(ProductCategory))
 export default async function Daaru({
     searchParams: { c, s },
 }: {
-    searchParams: { c: ProductCategory[]; s?: string }
+    searchParams: { c: ProductCategory[] | ProductCategory; s?: string }
 }) {
-    const qpCategories = new Set<ProductCategory>(c ?? [])
+    const qpCategories = new Set<ProductCategory>(
+        Array.isArray(c) ? c : c ? [c] : []
+    )
     const productCategories =
         qpCategories.size > 0 ? qpCategories : allCategories
     const products = await prisma.product.findMany({
