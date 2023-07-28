@@ -21,10 +21,6 @@
         {
             "path": "/api/sync/excise",
             "schedule": "0 0 * * *"
-        },
-        {
-            "path": "/api/sync/product",
-            "schedule": "*/2 5-14 * * *"
         }
     ]
 }
