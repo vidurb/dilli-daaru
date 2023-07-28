@@ -7,7 +7,7 @@ import { translator } from '@/lib/uuid'
 
 const client = new Client({})
 
-async function geocodeVendor(vendor: Vendor) {
+export async function geocodeVendor(vendor: Vendor) {
     const geocodeResponse = await client.geocode({
         params: {
             address: vendor.address,
@@ -20,7 +20,6 @@ async function geocodeVendor(vendor: Vendor) {
             where: { id: vendor.id },
             data: {
                 gmapsPlaceId: place.place_id,
-                location: place.geometry.location,
             },
         })
     } else {
