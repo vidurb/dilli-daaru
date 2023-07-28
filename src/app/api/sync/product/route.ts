@@ -21,3 +21,5 @@ export async function GET(request: NextRequest) {
     await Promise.all(products.map((product) => updateProduct(product)))
     return NextResponse.json({ message: 'ok', products })
 }
+
+export const dynamic = 'force-dynamic'

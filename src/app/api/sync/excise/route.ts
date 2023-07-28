@@ -35,3 +35,5 @@ export async function GET(request: NextRequest) {
         products: missingProducts.length,
     })
 }
+
+export const dynamic = 'force-dynamic'

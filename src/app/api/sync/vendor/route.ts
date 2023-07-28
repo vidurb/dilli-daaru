@@ -8,3 +8,5 @@ export async function GET(request: NextRequest) {
     await Promise.all(vendors.map((vendor) => geocodeVendor(vendor)))
     return NextResponse.json({ message: 'ok', vendors })
 }
+
+export const dynamic = 'force-dynamic'
