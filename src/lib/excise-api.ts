@@ -110,7 +110,7 @@ export function mapExciseVendor(
 > {
     const productTypes: ProductType[] = []
     if (vendor.clFlag === 'Y') productTypes.push(ProductType.COUNTRY)
-    if (vendor.ilFlag === 'Y') productTypes.push(ProductType.IMPORTED)
+    if (vendor.ilFlag === 'Y') productTypes.push(ProductType.INDIAN)
     if (vendor.flFlag === 'Y') productTypes.push(ProductType.IMPORTED)
 
     return {
