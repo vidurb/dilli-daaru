@@ -5,15 +5,15 @@
             "maxDuration": 10
         },
         "app/api/sync/vendor/route.ts": {
-            "memory": 512,
+            "memory": 128,
             "maxDuration": 10
         },
         "app/api/sync/excise/route.ts": {
-            "memory": 512,
+            "memory": 128,
             "maxDuration": 10
         },
         "app/api/sync/product/route.ts": {
-            "memory": 512,
+            "memory": 128,
             "maxDuration": 10
         }
     },

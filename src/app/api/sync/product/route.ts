@@ -17,7 +17,7 @@ async function updateProduct(product: Product) {
 }
 
 export async function GET(request: NextRequest) {
-    const products = await getRandomProducts(5)
+    const products = await getRandomProducts(2)
     await Promise.all(products.map((product) => updateProduct(product)))
     return NextResponse.json({ message: 'ok', products })
 }
