@@ -12,6 +12,7 @@ import gin from '../../../public/gin.svg'
 import vodka from '../../../public/vodka.svg'
 import whiskey from '../../../public/whiskey.svg'
 import wine from '../../../public/wine.svg'
+import styles from './daaru.module.css'
 
 // TODO: Add images for brandy, country, liqueur, rum, tequila
 
@@ -39,7 +40,7 @@ export async function ProductCard({
     product: Product & { vendors: Vendor[] }
 }) {
     return (
-        <div className="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
+        <div className={styles.productCard}>
             <Image
                 src={categoryImageMap[product.category]}
                 alt={product.category}
@@ -55,7 +56,7 @@ export async function ProductCard({
                 >
                     {product.name}
                 </Link>
-                <div className="bg-purple-700 text-white rounded inline-block px-1.5 py-0.5 mb-0.5">
+                <div className={styles.productCategoryPill}>
                     {product.category}
                 </div>
                 <div className="text-slate-500 inline pl-3">

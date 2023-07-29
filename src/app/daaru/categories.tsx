@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { title } from 'radash'
 import { useEffect, useState } from 'react'
 
+import styles from './daaru.module.css'
 function ProductCategorySelect({
     category,
     handleSelect,
