@@ -26,6 +26,11 @@ export default async function Daaru({
         },
         take: productCategories.size === allCategories.size ? 10 : 100,
         include: { vendors: true },
+        orderBy: {
+            vendors: {
+                _count: 'desc',
+            },
+        },
     })
 
     return (
