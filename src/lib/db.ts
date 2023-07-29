@@ -13,5 +13,5 @@ export async function getRandomProducts(quantity: number): Promise<Product[]> {
 }
 
 export async function getRandomVendors(quantity: number): Promise<Vendor[]> {
-    return prisma.$queryRaw`SELECT * from "Vendor" ORDER BY random() LIMIT ${quantity}`
+    return prisma.$queryRaw`SELECT "id", "externalId", "name", "address", "productTypes", "entity", "createdAt", "updatedAt", "gmapsPlaceId", "location"::text from "Vendor" ORDER BY random() LIMIT ${quantity} `
 }
