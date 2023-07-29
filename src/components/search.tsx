@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function Search() {
+export default function Search({ path }: { path: string }) {
     const router = useRouter()
     const searchParams = useSearchParams()!
 
@@ -11,7 +11,7 @@ export default function Search() {
             // @ts-ignore: Next has to fix this
             const clonedSearchParams = new URLSearchParams(searchParams)
             clonedSearchParams.set('s', (e.target as HTMLInputElement).value)
-            router.push(`/daaru?${clonedSearchParams.toString()}`)
+            router.push(`/${path}?${clonedSearchParams.toString()}`)
         }
     }
 

@@ -1,8 +1,8 @@
 import { ProductCategory } from '@prisma/client'
 
 import ProductCategories from '@/app/daaru/categories'
-import Search from '@/app/daaru/search'
 import { ProductCard } from '@/components'
+import Search from '@/components/search'
 import { prisma } from '@/lib/db'
 
 const allCategories = new Set<ProductCategory>(Object.values(ProductCategory))
