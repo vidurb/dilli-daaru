@@ -3,6 +3,10 @@ generator client {
   previewFeatures = ["fullTextSearch", "postgresqlExtensions"]
 }
 
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+}
+
 datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")

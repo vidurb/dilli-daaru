@@ -55,6 +55,7 @@
         "lint-staged": "^13.2.3",
         "prettier": "^3.0.0",
         "prisma": "^5.0.0",
+        "prisma-docs-generator": "^0.8.0",
         "stylelint": "^15.10.2",
         "stylelint-config-standard": "^34.0.0",
         "ts-node": "^10.9.1"
@@ -83,21 +84,5 @@
         "tabWidth": 4,
         "semi": false,
         "singleQuote": true
-    },
-    "lint-staged": {
-        "*.{js,jsx,ts,tsx}": [
-            "eslint --fix",
-            "prettier --write"
-        ],
-        "*.{css,scss,less}": [
-            "stylelint --fix",
-            "prettier --write"
-        ],
-        "*.json": [
-            "prettier --write"
-        ],
-        "schema.prisma": [
-            "prisma format --schema"
-        ]
     }
 }
