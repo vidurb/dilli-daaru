@@ -34,7 +34,7 @@ export default async function Daaru({
                 'flex min-h-screen flex-row items-center p-24 justify-center'
             }
         >
-            <div className="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2">
+            <div className="bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2 dark:bg-slate-900 dark:border-slate-500 dark:border">
                 <Image
                     src={categoryImageMap[product.category]}
                     alt={product.category}

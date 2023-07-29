@@ -40,7 +40,7 @@ export async function ProductCard({
     product: Product & { vendors: Vendor[] }
 }) {
     return (
-        <div className={styles.productCard}>
+        <div className={styles.card}>
             <Image
                 src={categoryImageMap[product.category]}
                 alt={product.category}
@@ -56,9 +56,7 @@ export async function ProductCard({
                 >
                     {product.name}
                 </Link>
-                <div className={styles.productCategoryPill}>
-                    {product.category}
-                </div>
+                <div className={styles.pill}>{product.category}</div>
                 <div className="text-slate-500 inline pl-3">
                     {product.vendors?.length ?? 0} thekas
                 </div>

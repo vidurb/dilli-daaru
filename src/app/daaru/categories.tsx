@@ -69,7 +69,7 @@ export default function ProductCategories({
     }, [categories, router, searchParams])
 
     return (
-        <div className="bg-white px-12 py-12 rounded shadow-md">
+        <div className="bg-white px-12 py-12 rounded shadow-md dark:bg-slate-900 dark:border-slate-500 dark:border">
             <Image
                 src="/dd-logo.svg"
                 alt="Dilli Daaru"
