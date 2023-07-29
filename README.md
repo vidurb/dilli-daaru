@@ -12,11 +12,11 @@ A web app to locate and view stock of government liquor stores in Delhi. Built u
 
 ## Environment variables
 
-| Name         | Description                                     |
-|--------------|-------------------------------------------------|
-| DATABASE_URL | Postgres Database URL for normal database operations |
-| DIRECT_URL   | Postgres Database URL for migrations            |
-| GOOGLE_MAPS_API_KEY | API key for Google Maps API. Required for location-based functionality ||
+| Name                | Description                                                            |
+|---------------------|------------------------------------------------------------------------|
+| DATABASE_URL        | Postgres Database URL for normal database operations                   |
+| DIRECT_URL          | Postgres Database URL for migrations                                   |
+| GOOGLE_MAPS_API_KEY | API key for Google Maps API. Required for location-based functionality |
 
 
 `DATABASE_URL` and `DIRECT_URL` can be the same for local development. In production `DATABASE_URL` is set to go through `pgbouncer` and `DIRECT_URL` is the normal postgres connection string
