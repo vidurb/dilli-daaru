@@ -1,5 +1,6 @@
 import './globals.css'
 
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
 
@@ -17,7 +18,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={jbm.className}>{children}</body>
+            <body className={jbm.className}>
+                {children}
+                <Analytics />
+            </body>
         </html>
     )
 }
