@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# dilli-daaru
 
-## Getting Started
+A web app to locate and view stock of government liquor stores in Delhi. Built using Next.js, Prisma, and Postgres. Uses the Next App Router & server-side rendering.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js 18
+- pnpm
+- Docker/equivalent runtime (to run the database locally)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Environment variables
 
-## Learn More
+| Name         | Description                                     |
+|--------------|-------------------------------------------------|
+| DATABASE_URL | Postgres Database URL for normal database operations |
+| DIRECT_URL   | Postgres Database URL for migrations            |
+| GOOGLE_MAPS_API_KEY | API key for Google Maps API. Required for location-based functionality ||
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`DATABASE_URL` and `DIRECT_URL` can be the same for local development. In production `DATABASE_URL` is set to go through `pgbouncer` and `DIRECT_URL` is the normal postgres connection string
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Setup instructions
 
-## Deploy on Vercel
+1. Clone the repo.
+2. Run `pnpm install` to install dependencies.
+3. Fill out the environment variables in `.env.local` and run `pnpm run db:seed` to seed the database.
+4. Run `pnpm run dev` to start the dev server.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Useful commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`pnpm run db:migrate:dev` - Generate migrations after changes to `schema.prisma`
+`pnpm run db:seed` - Seed the database with data from `prisma/seed.ts`
+`pnpm run db:studio` - Open Prisma Studio to view the database
+`pnpm run db:reset` - Reset the database (drops all tables and recreates them)
