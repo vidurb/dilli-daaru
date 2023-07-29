@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import styles from './home.module.css'
+
 export default async function Home() {
     return (
         <main
@@ -14,16 +16,10 @@ export default async function Home() {
                 height={24}
                 priority
             />
-            <Link
-                href={`/daaru`}
-                className={`bg-white p-12 rounded shadow-md text-center text-2xl uppercase w-full max-w-sm`}
-            >
+            <Link href={`/daaru`} className={styles.card}>
                 Find your fix
             </Link>
-            <Link
-                href={`/thekas`}
-                className={`bg-white p-12 rounded shadow-md text-center text-2xl uppercase w-full max-w-sm`}
-            >
+            <Link href={`/thekas`} className={styles.card}>
                 Check local stock
             </Link>
         </main>
