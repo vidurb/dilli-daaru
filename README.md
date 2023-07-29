@@ -38,4 +38,4 @@ You can use the `supabase` CLI to set up a local Postgres database by changing d
 
 ## DB Schema/Client
 
-You can view automatically generated documentation for the Prisma client (here)[https://htmlpreview.github.io/?https://github.com/vidurb/dilli-daaru/blob/main/prisma/docs/index.html]
+You can view automatically generated documentation for the Prisma client [here](https://htmlpreview.github.io/?https://github.com/vidurb/dilli-daaru/blob/main/prisma/docs/index.html).
