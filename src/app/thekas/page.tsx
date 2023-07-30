@@ -12,7 +12,9 @@ export default async function Thekas({
 }) {
     const vendors: Partial<Vendor & { dist_meters?: number }>[] =
         lat && lng
-            ? await prisma.$queryRaw`select nearby_vendors(${lat}::float, ${lng}::float);`
+            ? await prisma.$queryRaw<
+                  Vendor[]
+              >`select nearby_vendors(${lat}::float, ${lng}::float);`
             : await prisma.vendor.findMany({
                   where: {
                       ...(s !== undefined && { name: { search: s } }),
