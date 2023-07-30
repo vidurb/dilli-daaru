@@ -1,5 +1,5 @@
 -- Drop old function (wrong name)
-drop function nearby_restaurants(float, float);
+drop function if exists nearby_restaurants(float, float);
 -- Create new function
 create
     or replace function nearby_vendors(lat float, long float)
