@@ -1,7 +1,7 @@
 import { ProductCategory } from '@prisma/client'
 
 import ProductCategories from '@/app/daaru/categories'
-import { ProductCard } from '@/components'
+import ProductCard from '@/app/daaru/product-card'
 import Search from '@/components/search'
 import { prisma } from '@/lib/db'
 
