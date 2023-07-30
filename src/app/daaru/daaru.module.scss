@@ -14,6 +14,10 @@
     @apply bg-purple-700 text-white rounded inline-block px-1.5 py-0.5 mb-0.5;
 }
 
+.productCategoryImage {
+    @apply border rounded border-solid border-slate-300 inline mr-4;
+}
+
 .category {
     @apply flex flex-row justify-between;
 

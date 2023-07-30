@@ -27,7 +27,12 @@ export default async function Daaru({
             ...(s !== undefined && { name: { search: s } }),
         },
         take: productCategories.size === allCategories.size ? 10 : 100,
-        include: { vendors: true },
+
+        include: {
+            _count: {
+                select: { vendors: true },
+            },
+        },
         orderBy: {
             vendors: {
                 _count: 'desc',
