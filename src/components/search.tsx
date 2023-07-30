@@ -2,7 +2,13 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function Search({ path }: { path: string }) {
+export default function Search({
+    path,
+    placeholder,
+}: {
+    path: string
+    placeholder: string
+}) {
     const router = useRouter()
     const searchParams = useSearchParams()!
 
@@ -38,7 +44,7 @@ export default function Search({ path }: { path: string }) {
                 className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 dark:bg-slate-900"
                 type="text"
                 id="search"
-                placeholder="What's your fix?"
+                placeholder={placeholder}
                 onKeyDown={handleSearch}
             />
         </div>

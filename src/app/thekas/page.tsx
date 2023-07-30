@@ -30,7 +30,7 @@ export default async function Thekas({
     return (
         <main className="flex min-h-screen flex-row items-top p-24">
             <div className="max-w-md mx-auto">
-                <Search path={`thekas`} />
+                <Search path={`thekas`} placeholder={`Where ya at?`} />
                 {vendors.map((vendor, index) => (
                     <VendorCard vendor={vendor} key={index} />
                 ))}

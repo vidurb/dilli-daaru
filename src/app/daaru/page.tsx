@@ -40,7 +40,7 @@ export default async function Daaru({
             <ProductCategories selectedCategories={productCategories} />
 
             <div className={styles.dataContainer}>
-                <Search path={`daaru`} />
+                <Search path={`daaru`} placeholder={`What's your fix?`} />
                 {products.map((product, index) => (
                     <ProductCard product={product} key={index} />
                 ))}
