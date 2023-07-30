@@ -1,10 +1,33 @@
 import { PrismaClient, Product, Vendor } from '@prisma/client'
 
+import { translator } from '@/lib/uuid'
+
 const globalForPrisma = globalThis as unknown as {
     prisma: PrismaClient | undefined
 }
 
 export const prisma = globalForPrisma.prisma ?? new PrismaClient()
+
+export const xprisma = prisma.$extends({
+    result: {
+        product: {
+            shortUuid: {
+                needs: { id: true },
+                compute(product) {
+                    return translator.fromUUID(product.id)
+                },
+            },
+        },
+        vendor: {
+            shortUuid: {
+                needs: { id: true },
+                compute(vendor) {
+                    return translator.fromUUID(vendor.id)
+                },
+            },
+        },
+    },
+})
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
