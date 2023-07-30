@@ -1,4 +1,5 @@
 import { Vendor } from '@prisma/client'
+import { GeoJSON } from 'geojson'
 
 import Locator from '@/app/thekas/locator'
 import VendorCard from '@/app/thekas/vendor-card'
@@ -10,17 +11,16 @@ export default async function Thekas({
 }: {
     searchParams: { s?: string; lat?: number; lng?: number }
 }) {
-    const vendors: Partial<Vendor & { dist_meters?: number }>[] =
+    const vendors: Array<Vendor & { location?: GeoJSON }> =
         lat && lng
             ? await prisma.$queryRaw<
                   Vendor[]
-              >`select "id", "externalId", "name", "address", "productTypes", "entity", "createdAt", "updatedAt", "gmapsPlaceId", "location"::text from public."Vendor" order by location <-> st_point(${lng}::float, ${lat}::float)::geography;`
+              >`select "id", "externalId", "name", "address", "productTypes", "entity", "createdAt", "updatedAt", "gmapsPlaceId", ST_AsGeoJSON(location)::json as location from public."Vendor" order by location <-> st_point(${lng}::float, ${lat}::float)::geography;`
             : await prisma.vendor.findMany({
                   where: {
                       ...(s !== undefined && { name: { search: s } }),
                   },
                   take: 10,
-                  include: { products: true },
                   orderBy: {
                       products: {
                           _count: 'desc',

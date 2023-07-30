@@ -8,6 +8,9 @@ dependencies:
     '@googlemaps/google-maps-services-js':
         specifier: ^3.3.34
         version: 3.3.34
+    '@phosphor-icons/react':
+        specifier: ^2.0.10
+        version: 2.0.10(react-dom@18.2.0)(react@18.2.0)
     '@prisma/client':
         specifier: 5.0.0
         version: 5.0.0(prisma@5.0.0)
@@ -73,6 +76,9 @@ devDependencies:
     '@commitlint/config-conventional':
         specifier: ^17.6.7
         version: 17.6.7
+    '@types/geojson':
+        specifier: ^7946.0.10
+        version: 7946.0.10
     dotenv-cli:
         specifier: ^7.2.1
         version: 7.2.1
@@ -766,6 +772,20 @@ packages:
         engines: { node: '>=8.0.0' }
         dev: true
 
+    /@phosphor-icons/react@2.0.10(react-dom@18.2.0)(react@18.2.0):
+        resolution:
+            {
+                integrity: sha512-q5ITPNFhmEiYZLZOvEhjo2phlfxoOmit7vE1tBYMxcMqnZX2vdbMw3deDE7wCegpBKM/q/p39BJmhhoPcjZyCg==,
+            }
+        engines: { node: '>=10' }
+        peerDependencies:
+            react: '>= 16.8'
+            react-dom: '>= 16.8'
+        dependencies:
+            react: 18.2.0
+            react-dom: 18.2.0(react@18.2.0)
+        dev: false
+
     /@pkgr/utils@2.4.2:
         resolution:
             {
@@ -1246,6 +1266,13 @@ packages:
                 integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==,
             }
         dev: false
+
+    /@types/geojson@7946.0.10:
+        resolution:
+            {
+                integrity: sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA==,
+            }
+        dev: true
 
     /@types/json5@0.0.29:
         resolution:

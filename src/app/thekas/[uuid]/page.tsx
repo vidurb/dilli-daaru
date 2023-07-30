@@ -27,7 +27,7 @@ export async function geocodeVendor(vendor: Vendor) {
         const point = `Point(${place.geometry.location.lng} ${place.geometry.location.lat})`
         const result = await prisma.$queryRaw<
             Vendor[]
-        >`UPDATE "Vendor" SET "location" = ${point}::geometry, "gmapsPlaceId" = ${place.place_id} WHERE id = ${vendor.id} RETURNING "id", "externalId", "name", "address", "productTypes", "entity", "createdAt", "updatedAt", "gmapsPlaceId", "location"::text;`
+        >`UPDATE "Vendor" SET "location" = ${point}::geometry, "gmapsPlaceId" = ${place.place_id} WHERE id = ${vendor.id} RETURNING "id", "externalId", "name", "address", "productTypes", "entity", "createdAt", "updatedAt", "gmapsPlaceId", ST_AsText("location") as location;`
         return result[0]
     } else {
         return vendor

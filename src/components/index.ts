@@ -1,1 +1,2 @@
-export * from '../app/daaru/product-card';
+export * from './icons'
+export * from './search'
