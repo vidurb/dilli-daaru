@@ -11,7 +11,7 @@ async function geocodeVendorIfNecessary(vendor: Vendor) {
 }
 
 export async function GET(request: NextRequest) {
-    const vendors = await getRandomVendors(2)
+    const vendors = await getRandomVendors(10)
     await Promise.all(vendors.map((vendor) => geocodeVendorIfNecessary(vendor)))
     return NextResponse.json({ message: 'ok', vendors })
 }
