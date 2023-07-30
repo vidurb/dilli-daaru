@@ -1,10 +1,10 @@
 import Skeleton from 'react-loading-skeleton'
 
-import styles from '/daaru.module.css'
+import styles from './daaru.module.scss'
 
 export default function Loading() {
     return (
-        <main className="flex min-h-screen flex-row  items-top p-24">
+        <main className={styles.mainContainer}>
             <div className="rounded shadow-md w-full max-w-xs">
                 <Skeleton className={'w-full h-full'} />
             </div>

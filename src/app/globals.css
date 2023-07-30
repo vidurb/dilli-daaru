@@ -3,73 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 54, 41, 41;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 54, 41, 41;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-.section-title{
-  font-weight: 900;
-  border-bottom: 3px solid rgb(var(--foreground-rgb));
-  margin-bottom: 8px;
-  margin-top: 12px;
-  padding-bottom: 4px;
-}
-
-label{
-  margin-left: 8px;
-  margin-right: 16px;
-  text-transform: uppercase;
-}
-
-.option{
-  display: block;
-  padding: 3px 0 3px 0;
-}
-
-.card-container{
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-}
-
-button{
-  background-color: rgb(var(--foreground-rgb));
-  color: #fff;
-  border: none;
-  font-size: 12px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 800;
-  margin-top: 16px;
-  margin-right: 8px;
-  transition: transform 0.1s ease-in-out;
-}
-
-button:hover{
-  background-color: #000;
-  transform: translateY(-2px);
-}
-
-button:active{
-  transform: translateY(1px);
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
 }

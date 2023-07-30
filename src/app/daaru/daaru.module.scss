@@ -1,0 +1,55 @@
+.productCard {
+    @apply bg-white px-4 py-4 rounded shadow-sm ease-in-out duration-200 hover:shadow-md flex m-2 dark:bg-slate-900 dark:border-slate-500 dark:border;
+}
+
+.productTitle {
+    @apply text-lg pb-1.5 leading-6 block;
+}
+
+.productCardText {
+    @apply text-slate-500 inline pl-3;
+}
+
+.productCategoryPill {
+    @apply bg-purple-700 text-white rounded inline-block px-1.5 py-0.5 mb-0.5;
+}
+
+.category {
+    @apply flex flex-row justify-between;
+
+    & button {
+        @apply opacity-50 hover:underline;
+    }
+}
+
+.categoryLabel {
+    @apply uppercase;
+
+    & input {
+        @apply mr-2;
+    }
+}
+
+.categoryButton {
+    @apply bg-black text-white dark:text-white dark:bg-slate-500 border-0 px-4 py-2 rounded font-bold mt-4 mr-2 hover:bg-slate-700 dark:hover:bg-slate-400 ease-in-out duration-200 hover:-translate-y-2 active:translate-y-1;
+}
+
+.categorySectionTitle {
+    @apply font-black border-b-2 border-b-black dark:border-b-slate-500 mb-2 mt-3 pb-1;
+}
+
+.categoryContainer {
+    @apply bg-white px-12 py-12 rounded shadow-md dark:bg-slate-900 dark:border-slate-500 dark:border;
+}
+
+.categoryLogo {
+    @apply dark:invert pb-4;
+}
+
+.mainContainer {
+    @apply flex min-h-screen flex-col sm:flex-row items-start p-2 sm:p-12;
+}
+
+.dataContainer {
+    @apply max-w-md mx-auto;
+}

@@ -5,7 +5,7 @@ import { ProductCard } from '@/components'
 import Search from '@/components/search'
 import { prisma } from '@/lib/db'
 
-import styles from './daaru.module.css'
+import styles from './daaru.module.scss'
 
 const allCategories = new Set<ProductCategory>(Object.values(ProductCategory))
 
@@ -36,10 +36,10 @@ export default async function Daaru({
     })
 
     return (
-        <main className="flex min-h-screen flex-col sm:flex-row items-top p-2 sm:p-12">
+        <main className={styles.mainContainer}>
             <ProductCategories selectedCategories={productCategories} />
 
-            <div className="max-w-md mx-auto">
+            <div className={styles.dataContainer}>
                 <Search path={`daaru`} />
                 {products.map((product, index) => (
                     <ProductCard product={product} key={index} />
