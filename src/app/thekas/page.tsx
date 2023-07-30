@@ -14,7 +14,7 @@ export default async function Thekas({
         lat && lng
             ? await prisma.$queryRaw<
                   Vendor[]
-              >`select nearby_vendors(${lat}::float, ${lng}::float);`
+              >`select "id", "externalId", "name", "address", "productTypes", "entity", "createdAt", "updatedAt", "gmapsPlaceId", "location"::text from public."Vendor" order by location <-> st_point(${lng}::float, ${lat}::float)::geography;`
             : await prisma.vendor.findMany({
                   where: {
                       ...(s !== undefined && { name: { search: s } }),
@@ -27,7 +27,6 @@ export default async function Thekas({
                       },
                   },
               })
-    console.log({ lat, lng })
     return (
         <main className="flex min-h-screen flex-row items-top p-24">
             <div className="max-w-md mx-auto">
