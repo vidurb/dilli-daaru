@@ -5,7 +5,7 @@ import styles from './thekas.module.css'
 export async function VendorCard({
     vendor,
 }: {
-    vendor: Vendor & { products: Product[] }
+    vendor: Partial<Vendor> & { dist_meters?: number }
 }) {
     return (
         <div className={styles.vendorCard}>
@@ -14,10 +14,11 @@ export async function VendorCard({
                     {vendor.name}
                 </div>
                 <div className="text-black inline pl-3">{vendor.address}</div>
-
-                <div className="text-slate-500 inline pl-3">
-                    {vendor.products?.length ?? 0} sharaabs
-                </div>
+                {vendor.dist_meters && (
+                    <div className="text-slate-500 inline pl-3">
+                        {vendor.dist_meters.toFixed(2)} meters away
+                    </div>
+                )}
             </div>
         </div>
     )

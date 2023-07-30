@@ -1,12 +1,20 @@
 'use client'
 
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function Locator() {
+    const searchParams = useSearchParams()!
+    const router = useRouter()
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                console.log(position)
+                // @ts-ignore: Next has to fix this
+                const clonedSearchParams = new URLSearchParams(searchParams)
+                clonedSearchParams.set('lat', String(position.coords.latitude))
+                clonedSearchParams.set('lng', String(position.coords.longitude))
+                router.push(`/thekas?${clonedSearchParams.toString()}`)
             },
             (error) => {
                 console.log(error)
@@ -14,5 +22,5 @@ export default function Locator() {
             {}
         )
     }, [])
-    return <div>Requesting your location...</div>
+    return <></>
 }
