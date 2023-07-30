@@ -64,7 +64,7 @@
         "ts-node": "^10.9.1"
     },
     "prisma": {
-        "seed": "ts-node-esm prisma/seed.mts"
+        "seed": "sh prisma/seed.sh"
     },
     "stylelint": {
         "extends": [
