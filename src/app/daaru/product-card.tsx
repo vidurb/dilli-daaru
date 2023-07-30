@@ -37,7 +37,7 @@ export const categoryImageMap: Record<
 export async function ProductCard({
     product,
 }: {
-    product: Product & { vendors: Vendor[] }
+    product: Product & { vendors?: Vendor[] }
 }) {
     return (
         <div className={styles.productCard}>
@@ -59,9 +59,11 @@ export async function ProductCard({
                 <div className={styles.productCategoryPill}>
                     {product.category}
                 </div>
-                <div className={styles.productCardText}>
-                    {product.vendors?.length ?? 0} thekas
-                </div>
+                {product.vendors && (
+                    <div className={styles.productCardText}>
+                        {product.vendors?.length ?? 0} thekas
+                    </div>
+                )}
             </div>
         </div>
     )

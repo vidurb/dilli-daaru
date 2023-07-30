@@ -3,6 +3,10 @@ import { Vendor } from '@prisma/client'
 import { Prisma } from '@prisma/client'
 import { notFound } from 'next/navigation'
 
+import ProductCard from '@/app/daaru/product-card'
+import Locator from '@/app/thekas/locator'
+import VendorCard from '@/app/thekas/vendor-card'
+import Search from '@/components/search'
 import { prisma } from '@/lib/db'
 import { translator } from '@/lib/uuid'
 
@@ -41,12 +45,20 @@ export default async function Theka({
     if (!vendor) {
         return notFound()
     }
-    const geocodedVendor = vendor.gmapsPlaceId
-        ? vendor
-        : await geocodeVendor(vendor)
+    const [geocodedVendor, products] = await Promise.all([
+        vendor.gmapsPlaceId ? vendor : geocodeVendor(vendor),
+        prisma.product.findMany({
+            where: { vendors: { some: { id: vendor.id } } },
+        }),
+    ])
     return (
-        <div>
-            <code>{JSON.stringify(geocodedVendor)}</code>
-        </div>
+        <main className="flex min-h-screen flex-row items-top p-24">
+            <div className="max-w-md mx-auto">
+                <VendorCard vendor={geocodedVendor} />
+                {products.map((product, index) => (
+                    <ProductCard product={product} key={index} />
+                ))}
+            </div>
+        </main>
     )
 }
