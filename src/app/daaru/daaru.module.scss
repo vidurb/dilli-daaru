@@ -3,11 +3,11 @@
 }
 
 .productTitle {
-    @apply text-lg pb-1.5 leading-6 block;
+    @apply pb-1.5 leading-6 block text-base sm:text-sm md:text-lg;
 }
 
 .productCardText {
-    @apply text-slate-500 inline pl-3;
+    @apply text-slate-500 inline pl-3 text-base sm:text-sm md:text-base;
 }
 
 .productCategoryPill {
@@ -22,7 +22,7 @@
     @apply flex flex-row justify-between;
 
     & button {
-        @apply opacity-50 hover:underline;
+        @apply opacity-50 hover:underline hidden sm:block;
     }
 }
 
@@ -35,25 +35,25 @@
 }
 
 .categoryButton {
-    @apply bg-black text-white dark:text-white dark:bg-slate-500 border-0 px-4 py-2 rounded font-bold mt-4 mr-2 hover:bg-slate-700 dark:hover:bg-slate-400 ease-in-out duration-200 hover:-translate-y-2 active:translate-y-1;
+    @apply bg-black text-white dark:text-white dark:bg-slate-500 border-0 px-4 py-2 rounded font-bold mt-4 mr-2 hover:bg-slate-700 dark:hover:bg-slate-400 ease-in-out duration-200 hover:-translate-y-2 active:translate-y-1 hidden sm:block;
 }
 
 .categorySectionTitle {
-    @apply font-black border-b-2 border-b-black dark:border-b-slate-500 mb-2 mt-3 pb-1;
+    @apply font-black border-b-2 border-b-black dark:border-b-slate-500 mb-2 mt-3 pb-1 hidden sm:block;
 }
 
 .categoryContainer {
-    @apply bg-white px-12 py-12 rounded shadow-md dark:bg-slate-900 dark:border-slate-500 dark:border;
+    @apply bg-white p-2 sm:p-12 rounded shadow-md dark:bg-slate-900 dark:border-slate-500 dark:border grid grid-cols-3 sm:block w-full sm:w-auto mb-4 sm:mb-0 place-content-evenly;
 }
 
 .categoryLogo {
-    @apply dark:invert pb-4;
+    @apply dark:invert pb-4 col-span-3;
 }
 
 .mainContainer {
-    @apply flex min-h-screen flex-col sm:flex-row items-start p-2 sm:p-12;
+    @apply flex min-h-screen flex-col sm:flex-row items-start p-2 sm:p-6 md:p-12;
 }
 
 .dataContainer {
-    @apply max-w-md mx-auto;
+    @apply max-w-full sm:max-w-xs md:max-w-sm mx-auto;
 }
