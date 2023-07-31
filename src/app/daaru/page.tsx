@@ -26,7 +26,7 @@ export default async function Daaru({
             category: {
                 in: Array.from(productCategories),
             },
-            ...(s !== undefined && { name: { search: s } }),
+            ...(s && { name: { search: s } }),
         },
         take: productCategories.size === allCategories.size ? 10 : 100,
 
