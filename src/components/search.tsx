@@ -41,7 +41,7 @@ export default function Search({
             </div>
 
             <input
-                className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 dark:bg-slate-900"
+                className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 dark:bg-slate-900 dark:text-slate-100"
                 type="text"
                 id="search"
                 placeholder={placeholder}
