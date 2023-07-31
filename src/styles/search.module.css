@@ -1,0 +1,11 @@
+.searchContainer {
+    @apply relative flex items-center w-full h-12 rounded-md shadow-sm focus-within:shadow-lg bg-white overflow-hidden dark:bg-slate-900 dark:border-slate-500 dark:border;
+}
+
+.searchIcon {
+    @apply grid place-items-center h-full w-12 text-gray-300 dark:text-slate-100;
+}
+
+.search {
+    @apply h-full w-full outline-none text-sm text-gray-700 pr-2 dark:bg-slate-900 dark:text-slate-100;
+}

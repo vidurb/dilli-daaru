@@ -2,6 +2,8 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
+import styles from '../styles/search.module.css'
+
 export default function Search({
     path,
     placeholder,
@@ -22,8 +24,8 @@ export default function Search({
     }
 
     return (
-        <div className="relative flex items-center w-full h-12 rounded-md shadow-sm focus-within:shadow-lg bg-white overflow-hidden dark:bg-slate-900 dark:border-slate-500 dark:border">
-            <div className="grid place-items-center h-full w-12 text-gray-300 dark:text-slate-100">
+        <div className={styles.searchContainer}>
+            <div className={styles.searchIcon}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -41,7 +43,7 @@ export default function Search({
             </div>
 
             <input
-                className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 dark:bg-slate-900 dark:text-slate-100"
+                className={styles.search}
                 type="text"
                 id="search"
                 placeholder={placeholder}
