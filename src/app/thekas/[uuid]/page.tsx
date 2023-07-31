@@ -1,17 +1,23 @@
 import { Client } from '@googlemaps/google-maps-services-js'
 import { ProductCategory, Vendor } from '@prisma/client'
-import { Prisma } from '@prisma/client'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
 import ProductCategories from '@/app/daaru/categories'
 import ProductCard from '@/app/daaru/product-card'
-import Locator from '@/app/thekas/locator'
 import VendorCard from '@/app/thekas/vendor-card'
 import Search from '@/components/search'
 import { prisma } from '@/lib/db'
 import { translator } from '@/lib/uuid'
+
+export async function generateStaticParams() {
+    const vendors = await prisma.vendor.findMany({ select: { id: true } })
+
+    return vendors.map((vendor) => ({
+        uuid: translator.fromUUID(vendor.id),
+    }))
+}
 
 const client = new Client({})
 

@@ -11,7 +11,10 @@ import { translator } from '@/lib/uuid'
 import styles from '../daaru.module.scss'
 
 export async function generateStaticParams() {
-    const products = await prisma.product.findMany({ select: { id: true } })
+    const products = await prisma.product.findMany({
+        select: { id: true },
+        where: { vendors: { some: {} } },
+    })
 
     return products.map((product) => ({
         uuid: translator.fromUUID(product.id),
