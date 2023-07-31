@@ -51,7 +51,10 @@ export default async function Daaru({
                     </div>
                 }
             >
-                <ProductCategories selectedCategories={productCategories} />
+                <ProductCategories
+                    selectedCategories={productCategories}
+                    path={'daaru'}
+                />
             </Suspense>
             <div className={styles.dataContainer}>
                 <Suspense fallback={<Skeleton className={'h-12 mx-2'} />}>

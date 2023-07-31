@@ -41,8 +41,10 @@ function ProductCategorySelect({
 
 export default function ProductCategories({
     selectedCategories,
+    path,
 }: {
     selectedCategories: Set<ProductCategory>
+    path: string
 }) {
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -77,7 +79,7 @@ export default function ProductCategories({
         if (searchParams.has('s')) {
             clonedSearchParams.set('s', searchParams.get('s')!)
         }
-        router.push(`/daaru?${clonedSearchParams.toString()}`)
+        router.push(`/${path}?${clonedSearchParams.toString()}`)
     }, [categories, router, searchParams])
 
     return (
