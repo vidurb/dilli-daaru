@@ -82,15 +82,15 @@ export default function ProductCategories({
 
     return (
         <div className={styles.categoryContainer}>
-            <Image
-                src="/dd-logo.svg"
-                alt="Dilli Daaru"
-                className={styles.categoryLogo}
-                width={160}
-                height={24}
-                priority
-            />
-
+            <div className={styles.categoryLogoContainer}>
+                <Image
+                    src="/dd-logo.svg"
+                    alt="Dilli Daaru"
+                    className={styles.categoryLogo}
+                    fill
+                    priority
+                />
+            </div>
             <div className={styles.categorySectionTitle}>SOFT</div>
             <ProductCategorySelect
                 category={ProductCategory.WINE}

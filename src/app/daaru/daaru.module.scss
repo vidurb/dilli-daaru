@@ -43,11 +43,15 @@
 }
 
 .categoryContainer {
-    @apply bg-white p-2 sm:p-12 rounded shadow-md dark:bg-slate-900 dark:border-slate-500 dark:border grid grid-cols-3 sm:block w-full sm:w-auto mb-4 sm:mb-0 place-content-evenly;
+    @apply bg-white p-2 sm:p-12 rounded shadow-md dark:bg-slate-900 dark:border-slate-500 dark:border grid grid-cols-3 sm:block w-full sm:w-auto mb-4 sm:mb-0 place-content-evenly relative;
+}
+
+.categoryLogoContainer {
+    @apply w-full h-auto m-2 sm:w-48 sm:h-14 relative mx-auto row-start-2 col-start-2 row-span-3;
 }
 
 .categoryLogo {
-    @apply dark:invert pb-4 col-span-3;
+    @apply dark:invert;
 }
 
 .mainContainer {
