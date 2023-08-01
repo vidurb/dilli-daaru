@@ -2,10 +2,7 @@ import { Product } from '@prisma/client'
 import dayjs from 'dayjs'
 import { NextRequest, NextResponse } from 'next/server'
 
-import {
-    fetchAndUpdatePrices,
-    fetchAndUpdateVendors,
-} from '@/app/api/availability/route'
+import { fetchAndUpdateVendors } from '@/app/api/availability/route'
 import { getRandomProducts, prisma } from '@/lib'
 import { areVendorsOpen } from '@/lib/utils'
 
