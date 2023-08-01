@@ -121,7 +121,7 @@ export default function ProductCategories({
                 category={ProductCategory.GIN}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.RUM)}
+                defaultChecked={categories.has(ProductCategory.GIN)}
             />
             <ProductCategorySelect
                 category={ProductCategory.WHISKEY}
