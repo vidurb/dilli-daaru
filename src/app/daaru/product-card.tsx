@@ -64,6 +64,11 @@ export async function ProductCard({
                         {product._count.vendors} thekas
                     </div>
                 )}
+                {product.mrp > 0 && (
+                    <div className={`text-yellow-800`}>
+                        ₹{product.mrp.toFixed(2)}
+                    </div>
+                )}
             </div>
         </div>
     )
