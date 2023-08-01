@@ -5,7 +5,7 @@ import { fetchAndUpdateVendors } from '@/app/api/availability/route'
 import { ProductCard } from '@/app/daaru/product-card'
 import VendorCard from '@/app/thekas/vendor-card'
 import { LocationHelper } from '@/components'
-import { prisma } from '@/lib/db'
+import { ExtendedVendor, getNearbyVendorsWithProduct, prisma } from '@/lib/db'
 import { areVendorsOpen } from '@/lib/utils'
 import { translator } from '@/lib/uuid'
 
@@ -24,8 +24,10 @@ import styles from '../daaru.module.scss'
 
 export default async function Daaru({
     params: { uuid },
+    searchParams: { lat, lng },
 }: {
     params: { uuid: string }
+    searchParams: { lat?: number; lng?: number }
 }) {
     const product = await prisma.product.findUnique({
         where: { id: uuid.includes('-') ? uuid : translator.toUUID(uuid) },
@@ -39,12 +41,9 @@ export default async function Daaru({
     if (!product) {
         return notFound()
     }
-    const vendors =
-        product.vendorsUpdatedAt &&
-        dayjs(product.vendorsUpdatedAt).isSame(dayjs(), 'day')
-            ? product.vendors
-            : areVendorsOpen()
-            ? await fetchAndUpdateVendors(product)
+    const vendors: ExtendedVendor[] =
+        lat && lng
+            ? await getNearbyVendorsWithProduct(lat, lng, product.id)
             : product.vendors
     return (
         <main className={styles.mainContainer}>

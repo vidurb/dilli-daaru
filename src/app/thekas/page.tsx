@@ -4,18 +4,16 @@ import { GeoJSON } from 'geojson'
 import VendorCard from '@/app/thekas/vendor-card'
 import { LocationHelper } from '@/components'
 import Search from '@/components/search'
-import { prisma } from '@/lib'
+import { ExtendedVendor, getNearbyVendors, prisma } from '@/lib'
 
 export default async function Thekas({
     searchParams: { s, lat, lng },
 }: {
     searchParams: { s?: string; lat?: number; lng?: number }
 }) {
-    const vendors: Array<Vendor & { location?: GeoJSON }> =
+    const vendors: ExtendedVendor[] =
         lat && lng
-            ? await prisma.$queryRaw<
-                  Vendor[]
-              >`select "id", "externalId", "name", "address", "productTypes", "entity", "createdAt", "updatedAt", "gmapsPlaceId", ST_AsGeoJSON(location)::json as location from public."Vendor" order by location <-> st_point(${lng}::float, ${lat}::float)::geography;`
+            ? await getNearbyVendors(lat, lng, s)
             : await prisma.vendor.findMany({
                   where: {
                       ...(s !== undefined && { name: { search: s } }),

@@ -3,7 +3,7 @@ import { GeoJSON } from 'geojson'
 import Link from 'next/link'
 
 import { MapPin } from '@/components'
-import { translator } from '@/lib'
+import { ExtendedVendor, translator } from '@/lib'
 
 import styles from './thekas.module.css'
 
@@ -35,11 +35,7 @@ function VendorLocation({
     return null
 }
 
-export async function VendorCard({
-    vendor,
-}: {
-    vendor: Vendor & { location?: GeoJSON }
-}) {
+export async function VendorCard({ vendor }: { vendor: ExtendedVendor }) {
     return (
         <div className={styles.vendorCard}>
             <div className="flex flex-row justify-between items-center mb-2">
@@ -54,6 +50,11 @@ export async function VendorCard({
             <div className="text-slate-500 inline col-span-2">
                 {vendor.address}
             </div>
+            {vendor.dist_meters && (
+                <div className="text-slate-500 inline col-span-2">
+                    {vendor.dist_meters.toFixed(0)} meters away
+                </div>
+            )}
         </div>
     )
 }

@@ -8,24 +8,58 @@ export default function LocationHelper() {
     const searchParams = useSearchParams()
     const pathname = usePathname()
 
+    function isAlreadyDeclined() {
+        const tempDecline = sessionStorage.getItem('locationDeclined')
+        const permanentDecline = localStorage.getItem('locationDeclined')
+        return tempDecline || permanentDecline
+    }
+
     useEffect(() => {
         if (!(searchParams.has('lat') && searchParams.has('lng'))) {
-            const tempDecline = sessionStorage.getItem('locationDeclined')
-            const permanentDecline = localStorage.getItem('locationDeclined')
-            if (!(tempDecline || permanentDecline)) {
-                const lat = Number(sessionStorage.getItem('lat'))
-                const lng = Number(sessionStorage.getItem('lng'))
-                if (lat && lng) {
-                    const clonedSearchParams = new URLSearchParams(
-                        searchParams as unknown as URLSearchParams
-                    )
-                    clonedSearchParams.set('lat', String(lat))
-                    clonedSearchParams.set('lng', String(lng))
-                    router.push(`${pathname}?${clonedSearchParams.toString()}`)
-                } else {
-                    router.push('/request-location')
-                }
+            if (isAlreadyDeclined()) {
+                return
             }
+            navigator.permissions
+                .query({ name: 'geolocation' })
+                .then((result) => {
+                    if (result.state === 'granted') {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                sessionStorage.setItem(
+                                    'lat',
+                                    String(position.coords.latitude)
+                                )
+                                sessionStorage.setItem(
+                                    'lng',
+                                    String(position.coords.longitude)
+                                )
+                                const clonedSearchParams = new URLSearchParams(
+                                    searchParams as unknown as URLSearchParams
+                                )
+                                clonedSearchParams.set(
+                                    'lat',
+                                    String(position.coords.latitude)
+                                )
+                                clonedSearchParams.set(
+                                    'lng',
+                                    String(position.coords.longitude)
+                                )
+                                router.push(
+                                    `${pathname}?${clonedSearchParams.toString()}`
+                                )
+                            },
+                            (error) => {
+                                sessionStorage.setItem(
+                                    'locationDeclined',
+                                    'true'
+                                )
+                            },
+                            {}
+                        )
+                    } else if (result.state === 'prompt') {
+                        router.push('/request-location')
+                    }
+                })
         }
     }, [router, searchParams, pathname])
 
