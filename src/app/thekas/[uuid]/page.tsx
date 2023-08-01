@@ -11,13 +11,13 @@ import Search from '@/components/search'
 import { prisma } from '@/lib/db'
 import { translator } from '@/lib/uuid'
 
-export async function generateStaticParams() {
-    const vendors = await prisma.vendor.findMany({ select: { id: true } })
-
-    return vendors.map((vendor) => ({
-        uuid: translator.fromUUID(vendor.id),
-    }))
-}
+// export async function generateStaticParams() {
+//     const vendors = await prisma.vendor.findMany({ select: { id: true } })
+//
+//     return vendors.map((vendor) => ({
+//         uuid: translator.fromUUID(vendor.id),
+//     }))
+// }
 
 const client = new Client({})
 
