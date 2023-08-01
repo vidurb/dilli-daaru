@@ -17,15 +17,6 @@ async function updateProduct(product: Product) {
     ) {
         await fetchAndUpdateVendors(product)
     }
-
-    // if (!product.mrp) {
-    //     const vendor = await prisma.vendor.findFirst({
-    //         where: { products: { some: { id: product.id } } },
-    //     })
-    //     if (vendor) {
-    //         await fetchAndUpdatePrices(vendor)
-    //     }
-    // }
 }
 
 export async function GET(request: NextRequest) {

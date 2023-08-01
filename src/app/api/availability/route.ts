@@ -36,24 +36,6 @@ export async function fetchAndUpdateVendors(product: Product) {
     return vendors
 }
 
-export async function fetchAndUpdatePrices(vendor: Vendor) {
-    const apiProducts: ExciseApiBrand[] = await fetch(
-        createProductsByVendorRequest(vendor)
-    ).then((r) => r.json())
-    return Promise.all(
-        apiProducts.map((apiProduct) => {
-            return prisma.product.update({
-                where: {
-                    externalKey: apiProduct.brandKey,
-                },
-                data: {
-                    mrp: apiProduct.mrp,
-                },
-            })
-        })
-    )
-}
-
 export async function GET(request: NextRequest) {
     const productId = request.nextUrl.searchParams.get('productId')
     if (productId) {
