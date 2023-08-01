@@ -2,7 +2,7 @@ import { Vendor } from '@prisma/client'
 import { GeoJSON } from 'geojson'
 import Link from 'next/link'
 
-import { MapPin } from '@/components'
+import { HouseLine, MapPin } from '@/components'
 import { ExtendedVendor, translator } from '@/lib'
 
 import styles from './thekas.module.css'
@@ -35,7 +35,14 @@ function VendorLocation({
     return null
 }
 
-export async function VendorCard({ vendor }: { vendor: ExtendedVendor }) {
+export async function VendorCard({
+    vendor,
+    showHome,
+}: {
+    vendor: ExtendedVendor
+    showHome?: boolean
+}) {
+    const showHomeButton = showHome ?? false
     return (
         <div className={styles.vendorCard}>
             <div className="flex flex-row justify-between items-center mb-2">
@@ -45,6 +52,11 @@ export async function VendorCard({ vendor }: { vendor: ExtendedVendor }) {
                 >
                     {vendor.name}
                 </Link>
+                {showHomeButton && (
+                    <Link href={`/select-home-theka?id=${vendor.id}`}>
+                        <HouseLine size={24} />
+                    </Link>
+                )}
                 <VendorLocation vendor={vendor} />
             </div>
             <div className="text-slate-500 inline col-span-2">

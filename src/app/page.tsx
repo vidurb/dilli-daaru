@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import HomeTheka from '@/app/home-theka'
+
 import styles from './home.module.css'
 
 export default async function Home() {
@@ -22,6 +24,7 @@ export default async function Home() {
             <Link href={`/thekas`} className={styles.card}>
                 Check local stock
             </Link>
+            <HomeTheka />
         </main>
     )
 }

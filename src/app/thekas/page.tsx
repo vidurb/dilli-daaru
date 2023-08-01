@@ -30,7 +30,7 @@ export default async function Thekas({
             <div className="max-w-md mx-auto">
                 <Search placeholder={`Where ya at?`} />
                 {vendors.map((vendor, index) => (
-                    <VendorCard vendor={vendor} key={index} />
+                    <VendorCard vendor={vendor} key={index} showHome={true} />
                 ))}
             </div>
             <LocationHelper />
