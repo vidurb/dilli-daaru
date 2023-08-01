@@ -14,6 +14,18 @@ export function createVendorsByProductRequest(product: Product) {
     )
 }
 
+export function createProductsByVendorRequest(vendor: Vendor) {
+    return new Request(
+        'https://delhiexcise.gov.in/api/RetailVendAPI/searchBrandAvailabilityByVendId',
+        {
+            headers: {
+                'Auth-Token': authToken,
+                VendId: vendor.externalId,
+            },
+        }
+    )
+}
+
 export const typeMap: Record<ExciseApiBrand['liquorType'], ProductType> = {
     'Indian Liquor': ProductType.INDIAN,
     'Foreign Liquor': ProductType.IMPORTED,

@@ -1,8 +1,12 @@
-import { Product } from '@prisma/client'
+import { Product, Vendor } from '@prisma/client'
 import dayjs from 'dayjs'
 import { NextRequest, NextResponse } from 'next/server'
 
-import { translator } from '@/lib'
+import {
+    createProductsByVendorRequest,
+    ExciseApiBrand,
+    translator,
+} from '@/lib'
 import { prisma } from '@/lib/db'
 import {
     createVendorsByProductRequest,
@@ -30,6 +34,24 @@ export async function fetchAndUpdateVendors(product: Product) {
         },
     })
     return vendors
+}
+
+export async function fetchAndUpdatePrices(vendor: Vendor) {
+    const apiProducts: ExciseApiBrand[] = await fetch(
+        createProductsByVendorRequest(vendor)
+    ).then((r) => r.json())
+    return Promise.all(
+        apiProducts.map((apiProduct) => {
+            return prisma.product.update({
+                where: {
+                    externalKey: apiProduct.brandKey,
+                },
+                data: {
+                    mrp: apiProduct.mrp,
+                },
+            })
+        })
+    )
 }
 
 export async function GET(request: NextRequest) {

@@ -2,8 +2,11 @@ import { Product } from '@prisma/client'
 import dayjs from 'dayjs'
 import { NextRequest, NextResponse } from 'next/server'
 
-import { fetchAndUpdateVendors } from '@/app/api/availability/route'
-import { getRandomProducts } from '@/lib'
+import {
+    fetchAndUpdatePrices,
+    fetchAndUpdateVendors,
+} from '@/app/api/availability/route'
+import { getRandomProducts, prisma } from '@/lib'
 import { areVendorsOpen } from '@/lib/utils'
 
 async function updateProduct(product: Product) {
@@ -12,7 +15,16 @@ async function updateProduct(product: Product) {
         (!dayjs(product.vendorsUpdatedAt).isSame(dayjs(), 'day') &&
             areVendorsOpen())
     ) {
-        return fetchAndUpdateVendors(product)
+        await fetchAndUpdateVendors(product)
+    }
+
+    if (!product.mrp) {
+        const vendor = await prisma.vendor.findFirst({
+            where: { products: { some: { id: product.id } } },
+        })
+        if (vendor) {
+            await fetchAndUpdatePrices(vendor)
+        }
     }
 }
 
