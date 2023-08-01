@@ -1,3 +1,3 @@
 'use client'
 
-export { MapPin } from '@phosphor-icons/react'
+export { MapPin, NavigationArrow } from '@phosphor-icons/react'

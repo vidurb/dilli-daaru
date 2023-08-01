@@ -84,18 +84,12 @@ export default async function Theka({
                     </div>
                 }
             >
-                <ProductCategories
-                    selectedCategories={productCategories}
-                    path={`thekas/${uuid}`}
-                />
+                <ProductCategories selectedCategories={productCategories} />
             </Suspense>
             <div className="max-w-md mx-auto">
                 <VendorCard vendor={geocodedVendor} />
                 <Suspense fallback={<Skeleton className={'h-12 mx-2'} />}>
-                    <Search
-                        path={`thekas/${uuid}`}
-                        placeholder={`What's your fix?`}
-                    />
+                    <Search placeholder={`What's your fix?`} />
                 </Suspense>
                 {products.map((product, index) => (
                     <ProductCard product={product} key={index} />

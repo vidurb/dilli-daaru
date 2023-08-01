@@ -2,7 +2,7 @@
 
 import { ProductCategory } from '@prisma/client'
 import Image from 'next/image'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { title } from 'radash'
 import { useEffect, useState } from 'react'
 
@@ -41,12 +41,11 @@ function ProductCategorySelect({
 
 export default function ProductCategories({
     selectedCategories,
-    path,
 }: {
     selectedCategories: Set<ProductCategory>
-    path: string
 }) {
     const router = useRouter()
+    const pathname = usePathname()
     const searchParams = useSearchParams()
 
     const [categories, setCategories] = useState(
@@ -71,16 +70,15 @@ export default function ProductCategories({
     }
 
     useEffect(() => {
-        // @ts-ignore: Next has to fix this
-        const clonedSearchParams = new URLSearchParams()
+        const clonedSearchParams = new URLSearchParams(
+            searchParams as unknown as URLSearchParams
+        )
+        clonedSearchParams.delete('c')
         for (const category of Array.from(categories)) {
             clonedSearchParams.append('c', category)
         }
-        if (searchParams.has('s')) {
-            clonedSearchParams.set('s', searchParams.get('s')!)
-        }
-        router.push(`/${path}?${clonedSearchParams.toString()}`)
-    }, [categories, router, searchParams])
+        router.push(`/${pathname}?${clonedSearchParams.toString()}`)
+    }, [categories, router, searchParams, pathname])
 
     return (
         <div className={styles.categoryContainer}>

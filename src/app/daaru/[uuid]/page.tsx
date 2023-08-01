@@ -2,8 +2,9 @@ import dayjs from 'dayjs'
 import { notFound } from 'next/navigation'
 
 import { fetchAndUpdateVendors } from '@/app/api/availability/route'
-import { categoryImageMap, ProductCard } from '@/app/daaru/product-card'
+import { ProductCard } from '@/app/daaru/product-card'
 import VendorCard from '@/app/thekas/vendor-card'
+import { LocationHelper } from '@/components'
 import { prisma } from '@/lib/db'
 import { areVendorsOpen } from '@/lib/utils'
 import { translator } from '@/lib/uuid'
@@ -53,6 +54,7 @@ export default async function Daaru({
                     <VendorCard vendor={vendor} key={index} />
                 ))}
             </div>
+            <LocationHelper />
         </main>
     )
 }

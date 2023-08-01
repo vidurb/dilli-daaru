@@ -51,14 +51,11 @@ export default async function Daaru({
                     </div>
                 }
             >
-                <ProductCategories
-                    selectedCategories={productCategories}
-                    path={'daaru'}
-                />
+                <ProductCategories selectedCategories={productCategories} />
             </Suspense>
             <div className={styles.dataContainer}>
                 <Suspense fallback={<Skeleton className={'h-12 mx-2'} />}>
-                    <Search path={`daaru`} placeholder={`What's your fix?`} />
+                    <Search placeholder={`What's your fix?`} />
                 </Suspense>
                 {products.map((product, index) => (
                     <ProductCard product={product} key={index} />

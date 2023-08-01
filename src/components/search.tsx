@@ -1,25 +1,21 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import styles from '../styles/search.module.css'
 
-export default function Search({
-    path,
-    placeholder,
-}: {
-    path: string
-    placeholder: string
-}) {
+export default function Search({ placeholder }: { placeholder: string }) {
     const router = useRouter()
+    const pathname = usePathname()
     const searchParams = useSearchParams()!
 
     function handleSearch(e: React.KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') {
-            // @ts-ignore: Next has to fix this
-            const clonedSearchParams = new URLSearchParams(searchParams)
+            const clonedSearchParams = new URLSearchParams(
+                searchParams as unknown as URLSearchParams
+            )
             clonedSearchParams.set('s', (e.target as HTMLInputElement).value)
-            router.push(`/${path}?${clonedSearchParams.toString()}`)
+            router.push(`/${pathname}?${clonedSearchParams.toString()}`)
         }
     }
 
