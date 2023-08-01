@@ -106,6 +106,9 @@ devDependencies:
     prisma-docs-generator:
         specifier: ^0.8.0
         version: 0.8.0
+    prisma-json-schema-generator:
+        specifier: ^4.0.0
+        version: 4.0.0
     sass:
         specifier: ^1.64.1
         version: 1.64.1
@@ -6107,6 +6110,20 @@ packages:
             pluralize: 8.0.0
             prismjs: 1.29.0
             ts-toolbelt: 9.6.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+        dev: true
+
+    /prisma-json-schema-generator@4.0.0:
+        resolution:
+            {
+                integrity: sha512-KsZ1gjr16HjXozbqqz1qyOmtjp/A/BUjzo8DMJcfdFoj0UzXKhqD4a4oRiJJEikp1ReNAi6A7hlL3oW+x10jRA==,
+            }
+        hasBin: true
+        dependencies:
+            '@prisma/generator-helper': 4.16.2
+            '@prisma/internals': 4.16.2
         transitivePeerDependencies:
             - encoding
             - supports-color
