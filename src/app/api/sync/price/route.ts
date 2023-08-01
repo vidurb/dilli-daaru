@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createProductsByVendorRequest, ExciseApiBrand, prisma } from '@/lib'
 
 export async function GET(request: NextRequest) {
-    const product = await prisma.product.findFirst({ where: { mrp: 0 } })
+    const product = await prisma.product.findFirst({
+        where: { mrp: 0, vendors: { some: {} } },
+    })
     if (!product) {
         return NextResponse.json({
             processed: 0,
@@ -36,3 +38,5 @@ export async function GET(request: NextRequest) {
         message: 'ok',
     })
 }
+
+export const dynamic = 'force-dynamic'
