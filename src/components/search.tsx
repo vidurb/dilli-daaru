@@ -10,12 +10,13 @@ export default function Search({ placeholder }: { placeholder: string }) {
     const searchParams = useSearchParams()!
 
     function handleSearch(e: React.KeyboardEvent<HTMLInputElement>) {
+        console.log(pathname)
         if (e.key === 'Enter') {
             const clonedSearchParams = new URLSearchParams(
                 searchParams as unknown as URLSearchParams
             )
             clonedSearchParams.set('s', (e.target as HTMLInputElement).value)
-            router.push(`/${pathname}?${clonedSearchParams.toString()}`)
+            router.push(`${pathname}?${clonedSearchParams.toString()}`)
         }
     }
 

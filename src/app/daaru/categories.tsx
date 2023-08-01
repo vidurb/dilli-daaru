@@ -77,7 +77,7 @@ export default function ProductCategories({
         for (const category of Array.from(categories)) {
             clonedSearchParams.append('c', category)
         }
-        router.push(`/${pathname}?${clonedSearchParams.toString()}`)
+        router.push(`${pathname}?${clonedSearchParams.toString()}`)
     }, [categories, router, searchParams, pathname])
 
     return (
