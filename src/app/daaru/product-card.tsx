@@ -6,24 +6,22 @@ import { ComponentProps } from 'react'
 
 import { translator } from '@/lib/uuid'
 
-import wine from '../../../public/wine.svg'
-import beer from '../../../public/beer.svg'
 import alcopop from '../../../public/alcopop.svg'
-import cider from '../../../public/cider.svg'
-
-import gin from '../../../public/gin.svg'
-import whiskey from '../../../public/whiskey.svg'
-import vodka from '../../../public/vodka.svg'
-import rum from '../../../public/rum.svg'
-import tequila from '../../../public/tequila.svg'
+import beer from '../../../public/beer.svg'
 import brandy from '../../../public/brandy.svg'
-
+import cider from '../../../public/cider.svg'
+import gin from '../../../public/gin.svg'
 import liqueur from '../../../public/liqueur.svg'
 import other from '../../../public/other.svg'
-
+import rum from '../../../public/rum.svg'
+import tequila from '../../../public/tequila.svg'
+import vodka from '../../../public/vodka.svg'
+import whiskey from '../../../public/whiskey.svg'
+import wine from '../../../public/wine.svg'
 import styles from './daaru.module.scss'
 
-// TODO: Add images for brandy, country, liqueur, rum, tequila
+// TODO: Add images for country
+// TODO: Set up a list of colors for each product category pill - Gyan will find TW colors.
 
 export const categoryImageMap: Record<
     ProductCategory,
