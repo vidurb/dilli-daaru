@@ -6,12 +6,21 @@ import { ComponentProps } from 'react'
 
 import { translator } from '@/lib/uuid'
 
-import alcopop from '../../../public/alcopop.svg'
-import beer from '../../../public/beer.svg'
-import gin from '../../../public/gin.svg'
-import vodka from '../../../public/vodka.svg'
-import whiskey from '../../../public/whiskey.svg'
 import wine from '../../../public/wine.svg'
+import beer from '../../../public/beer.svg'
+import alcopop from '../../../public/alcopop.svg'
+import cider from '../../../public/cider.svg'
+
+import gin from '../../../public/gin.svg'
+import whiskey from '../../../public/whiskey.svg'
+import vodka from '../../../public/vodka.svg'
+import rum from '../../../public/rum.svg'
+import tequila from '../../../public/tequila.svg'
+import brandy from '../../../public/brandy.svg'
+
+import liqueur from '../../../public/liqueur.svg'
+import other from '../../../public/other.svg'
+
 import styles from './daaru.module.scss'
 
 // TODO: Add images for brandy, country, liqueur, rum, tequila
@@ -22,13 +31,13 @@ export const categoryImageMap: Record<
 > = {
     [ProductCategory.ALCOPOP]: alcopop,
     [ProductCategory.BEER]: beer,
-    [ProductCategory.BRANDY]: wine,
-    [ProductCategory.CIDER]: beer,
-    [ProductCategory.OTHER]: beer,
+    [ProductCategory.BRANDY]: brandy,
+    [ProductCategory.CIDER]: cider,
+    [ProductCategory.OTHER]: other,
     [ProductCategory.GIN]: gin,
-    [ProductCategory.LIQUEUR]: beer,
-    [ProductCategory.RUM]: beer,
-    [ProductCategory.TEQUILA]: beer,
+    [ProductCategory.LIQUEUR]: liqueur,
+    [ProductCategory.RUM]: rum,
+    [ProductCategory.TEQUILA]: tequila,
     [ProductCategory.VODKA]: vodka,
     [ProductCategory.WHISKEY]: whiskey,
     [ProductCategory.WINE]: wine,
