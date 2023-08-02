@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import HomeTheka from '@/app/home-theka'
+import { BeerBottle,MapPin } from '@/components'
 
 import styles from './home.module.css'
 
@@ -20,12 +21,14 @@ export default async function Home() {
             />
 
             <Link href={`/daaru`} className={styles.card}>
+                <BeerBottle size={36} />
                 Find by name
                 <div class="text-slate-500 text-base pt-4">
                     Which thekas stock the alcohol you want?
                 </div>
             </Link>
             <Link href={`/thekas`} className={styles.card}>
+                <MapPin size={36} />
                 Thekas near you
                 <div class="text-slate-500 text-base pt-4">
                     Look through what your local theka has in stock

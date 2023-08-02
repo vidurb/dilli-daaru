@@ -1,3 +1,8 @@
 'use client'
 
-export { HouseLine,MapPin, NavigationArrow } from '@phosphor-icons/react'
+export {
+    BeerBottle,
+    HouseLine,
+    MapPin,
+    NavigationArrow,
+} from '@phosphor-icons/react'
