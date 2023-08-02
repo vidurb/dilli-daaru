@@ -10,6 +10,7 @@ import alcopop from '../../../public/alcopop.svg'
 import beer from '../../../public/beer.svg'
 import brandy from '../../../public/brandy.svg'
 import cider from '../../../public/cider.svg'
+import country from '../../../public/country.svg'
 import gin from '../../../public/gin.svg'
 import liqueur from '../../../public/liqueur.svg'
 import other from '../../../public/other.svg'
@@ -31,6 +32,7 @@ export const categoryImageMap: Record<
     [ProductCategory.BEER]: beer,
     [ProductCategory.BRANDY]: brandy,
     [ProductCategory.CIDER]: cider,
+    [ProductCategory.COUNTRY]: country,
     [ProductCategory.OTHER]: other,
     [ProductCategory.GIN]: gin,
     [ProductCategory.LIQUEUR]: liqueur,
