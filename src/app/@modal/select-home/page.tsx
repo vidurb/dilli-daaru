@@ -1,10 +1,12 @@
 import dynamic from 'next/dynamic'
+import { notFound } from 'next/navigation'
 import Skeleton from 'react-loading-skeleton'
 
-import { NavigationArrow } from '@/components'
+import { HouseLine } from '@/components'
 import { ModalBackButton } from '@/components/modal-back-button'
+import { prisma, translator } from '@/lib'
 
-const DynamicLocationButton = dynamic(() => import('./location-button'), {
+const DynamicConfirmButton = dynamic(() => import('./confirm-button'), {
     ssr: false,
     loading: () => <Skeleton className={`w-20 h-4`} />,
 })
@@ -14,15 +16,20 @@ const DynamicDeclineButton = dynamic(() => import('./decline-button'), {
     loading: () => <Skeleton className={`w-20 h-4`} />,
 })
 
-const DynamicPermanentDeclineButton = dynamic(
-    () => import('./permanent-decline-button'),
-    {
-        ssr: false,
-        loading: () => <Skeleton className={`w-20 h-4`} />,
+export default async function RequestLocation({
+    searchParams: { id },
+}: {
+    searchParams: { id?: string }
+}) {
+    if (!id) {
+        return notFound()
     }
-)
+    const vendor = await prisma.vendor.findUnique({ where: { id } })
 
-export default function RequestLocation() {
+    if (!vendor) {
+        return notFound()
+    }
+
     return (
         <div
             tabIndex={-1}
@@ -32,18 +39,17 @@ export default function RequestLocation() {
                 <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <ModalBackButton />
                     <div className="p-6 text-center">
-                        <NavigationArrow size={64} className={`mx-auto mb-4`} />
+                        <HouseLine size={64} className={`mx-auto mb-4`} />
                         <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                            Would you like to allow location access?
+                            Would you like to mark {vendor.name} as your home
+                            theka?
                         </h3>
                         <p className="mb-5 font-normal text-gray-500 dark:text-gray-400">
-                            We use your location to determine which thekas are
-                            closest to you and do not store the location or
-                            transmit it to any third parties.
+                            We will store your selected theka in your browser
+                            and display it on the home page on your next visit.
                         </p>
-                        <DynamicLocationButton />
+                        <DynamicConfirmButton id={id} />
                         <DynamicDeclineButton />
-                        <DynamicPermanentDeclineButton />
                     </div>
                 </div>
             </div>

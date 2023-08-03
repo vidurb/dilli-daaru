@@ -6,7 +6,7 @@ export default function DeclineLocationButton() {
     const router = useRouter()
 
     function markLocationPermanentlyDeclined() {
-        localStorage.setItem('locationDeclined', 'true')
+        window.localStorage.setItem('locationDeclined', 'true')
     }
 
     return (
