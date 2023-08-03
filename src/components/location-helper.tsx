@@ -9,8 +9,8 @@ export default function LocationHelper() {
     const pathname = usePathname()
 
     function isAlreadyDeclined() {
-        const tempDecline = sessionStorage.getItem('locationDeclined')
-        const permanentDecline = localStorage.getItem('locationDeclined')
+        const tempDecline = window.sessionStorage.getItem('locationDeclined')
+        const permanentDecline = window.localStorage.getItem('locationDeclined')
         return tempDecline || permanentDecline
     }
 
@@ -25,11 +25,11 @@ export default function LocationHelper() {
                     if (result.state === 'granted') {
                         navigator.geolocation.getCurrentPosition(
                             (position) => {
-                                sessionStorage.setItem(
+                                window.sessionStorage.setItem(
                                     'lat',
                                     String(position.coords.latitude)
                                 )
-                                sessionStorage.setItem(
+                                window.sessionStorage.setItem(
                                     'lng',
                                     String(position.coords.longitude)
                                 )
@@ -49,7 +49,7 @@ export default function LocationHelper() {
                                 )
                             },
                             (error) => {
-                                sessionStorage.setItem(
+                                window.sessionStorage.setItem(
                                     'locationDeclined',
                                     'true'
                                 )

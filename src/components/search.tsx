@@ -16,7 +16,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 searchParams as unknown as URLSearchParams
             )
             clonedSearchParams.set('s', (e.target as HTMLInputElement).value)
-            router.push(`${pathname}?${clonedSearchParams.toString()}`)
+            router.replace(`${pathname}?${clonedSearchParams.toString()}`)
         }
     }
 

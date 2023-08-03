@@ -87,7 +87,7 @@ export default async function Theka({
                 <ProductCategories selectedCategories={productCategories} />
             </Suspense>
             <div className="max-w-md mx-auto">
-                <VendorCard vendor={geocodedVendor} />
+                <VendorCard vendor={geocodedVendor} showHome={true} />
                 <Suspense fallback={<Skeleton className={'h-12 mx-2'} />}>
                     <Search placeholder={`What's your fix?`} />
                 </Suspense>
