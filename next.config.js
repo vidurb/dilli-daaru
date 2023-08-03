@@ -18,6 +18,7 @@ module.exports = withSentryConfig(
 
         org: 'vidurdev',
         project: 'dilli-daaru',
+        dryRun: process.env.NODE_ENV !== 'production',
     },
     {
         // For all available options, see:
