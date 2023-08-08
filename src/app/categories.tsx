@@ -6,7 +6,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { title } from 'radash'
 import { useEffect, useState } from 'react'
 
-import styles from './daaru.module.scss'
+import styles from './daaru/daaru.module.scss'
 
 function ProductCategorySelect({
     category,
@@ -82,15 +82,6 @@ export default function ProductCategories({
 
     return (
         <div className={styles.categoryContainer}>
-            <div className={styles.categoryLogoContainer}>
-                <Image
-                    src="/dd-logo.svg"
-                    alt="Dilli Daaru"
-                    className={styles.categoryLogo}
-                    fill
-                    priority
-                />
-            </div>
             <div className={styles.categorySectionTitle}>SOFT</div>
             <ProductCategorySelect
                 category={ProductCategory.WINE}

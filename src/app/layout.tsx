@@ -3,6 +3,10 @@ import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
+import Image from "next/image";
+
+import styles from "@/app/home.module.css";
+import DesktopDaaruSearch from "@/components/desktop-daaru-search";
 
 const jbm = JetBrains_Mono({ subsets: ['latin'] })
 
@@ -21,7 +25,62 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={jbm.className}>
-                {children}
+            <header className={styles.header}>
+                <div className={styles.logo}>
+                    <Image
+                        src="/dd-logo-alt.svg"
+                        alt="Dilli Daaru"
+                        priority
+                        width={165}
+                        height={88}
+                    />
+                </div>
+                <div className={styles.search}>
+                    <DesktopDaaruSearch placeholder={`What's your fix?`} />
+                </div>
+                <div className={styles.ticker}>
+                    <div className={styles.tickerText}>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru ·&nbsp;</span>
+                        <span>dilli daaru</span>
+                    </div>
+                </div>
+            </header>
+
+            {children}
                 {modal}
                 <Analytics />
             </body>

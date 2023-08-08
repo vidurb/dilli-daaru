@@ -26,11 +26,10 @@ export default function RequestLocation() {
     return (
         <div
             tabIndex={-1}
-            className="fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-slate-800/25 flex justify-center items-center"
+            className="fixed top-0 left-0 right-0 z-50 h-screen w-screen bg-slate-800/25 flex justify-center items-center"
         >
-            <div className="relative w-full max-w-md max-h-full">
+            <div className="relative p-4">
                 <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <ModalBackButton />
                     <div className="p-6 text-center">
                         <NavigationArrow size={64} className={`mx-auto mb-4`} />
                         <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">

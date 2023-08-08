@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import { notFound } from 'next/navigation'
 
 import { fetchAndUpdateVendors } from '@/app/api/availability/route'
-import { ProductCard } from '@/app/daaru/product-card'
+import { ProductCard } from '@/app/product-card'
 import VendorCard from '@/app/thekas/vendor-card'
 import { LocationHelper } from '@/components'
 import { ExtendedVendor, getNearbyVendorsWithProduct, prisma } from '@/lib/db'
