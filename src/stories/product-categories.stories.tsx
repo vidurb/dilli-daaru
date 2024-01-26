@@ -1,8 +1,8 @@
-import { ProductCategory } from '@prisma/client'
 import { Meta, StoryObj } from '@storybook/react'
 
 import ProductCategories from '@/components/product-categories'
 import { ProductCategorySelect } from '@/components/product-category-select'
+import { ProductCategory } from '@/types/enums'
 
 const meta = {
     title: 'Components/ProductCategories',
