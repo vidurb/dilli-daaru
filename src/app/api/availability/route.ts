@@ -2,11 +2,7 @@ import { Product, Vendor } from '@prisma/client'
 import dayjs from 'dayjs'
 import { NextRequest, NextResponse } from 'next/server'
 
-import {
-    createProductsByVendorRequest,
-    ExciseApiBrand,
-    translator,
-} from '@/lib'
+import { translator } from '@/lib'
 import { prisma } from '@/lib/db'
 import {
     createVendorsByProductRequest,

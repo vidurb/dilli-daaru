@@ -1,11 +1,7 @@
-import dayjs from 'dayjs'
 import { notFound } from 'next/navigation'
 
-import { fetchAndUpdateVendors } from '@/app/api/availability/route'
-import { LocationHelper,ProductCard } from '@/components'
-import VendorCard from '@/components/vendor-card'
+import { LocationHelper, ProductCard, VendorCard } from '@/components'
 import { ExtendedVendor, getNearbyVendorsWithProduct, prisma } from '@/lib/db'
-import { areVendorsOpen } from '@/lib/utils'
 import { translator } from '@/lib/uuid'
 
 import styles from '../daaru.module.scss'
