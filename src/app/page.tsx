@@ -1,8 +1,7 @@
 import { ProductCategory } from '@prisma/client'
 
-import { ProductCard } from '@/components'
+import { ProductCard, ProductCategories } from '@/components'
 import {} from '@/components'
-import ProductCategories from '@/components/product-categories'
 import { prisma } from '@/lib'
 
 import styles from './home.module.css'

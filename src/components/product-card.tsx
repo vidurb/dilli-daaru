@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ComponentProps } from 'react'
 import { z } from 'zod'
 
+import { cleanProductName } from '@/lib/utils'
 import { translator } from '@/lib/uuid'
 import styles from '@/styles/product-card.module.css'
 
@@ -63,7 +64,7 @@ export function ProductCard({
                     className={styles.productTitle}
                     href={`/daaru/${translator.fromUUID(product.id)}`}
                 >
-                    {product.name}
+                    {cleanProductName(product.name, product.category)}
                 </Link>
                 <div className={styles.productCategoryPill}>
                     {product.category}

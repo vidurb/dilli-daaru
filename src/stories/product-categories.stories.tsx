@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import ProductCategories from '@/components/product-categories'
+import { ProductCategories } from '@/components'
 import { ProductCategorySelect } from '@/components/product-category-select'
 
 import { ProductCategorySchema } from '../../prisma/generated/zod'

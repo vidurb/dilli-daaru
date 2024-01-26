@@ -47,5 +47,3 @@ export async function VendorCard({
         </div>
     )
 }
-
-export default VendorCard

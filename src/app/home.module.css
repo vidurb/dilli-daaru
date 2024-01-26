@@ -15,7 +15,7 @@
 }
 
 .products {
-    @apply w-4/5 hidden md:grid grid-cols-2 gap-x-4 gap-y-6 p-24 bg-ddb;
+    @apply w-4/5 hidden md:grid grid-cols-3 gap-x-4 gap-y-6 p-24 bg-ddb;
 }
 
 .card {

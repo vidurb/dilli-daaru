@@ -4,9 +4,12 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-import { DesktopDaaruSearch, ProductCard } from '@/components'
-import ProductCategories from '@/components/product-categories'
-import VendorCard from '@/components/vendor-card'
+import {
+    DesktopDaaruSearch,
+    ProductCard,
+    ProductCategories,
+    VendorCard,
+} from '@/components'
 import { prisma } from '@/lib/db'
 import { translator } from '@/lib/uuid'
 

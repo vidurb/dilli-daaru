@@ -11,7 +11,7 @@ import {
     ProductCategoryType as ProductCategory,
 } from '../../prisma/generated/zod'
 
-export default function ProductCategories({
+export function ProductCategories({
     selectedCategories,
 }: {
     selectedCategories: Set<ProductCategory> | Array<ProductCategory>

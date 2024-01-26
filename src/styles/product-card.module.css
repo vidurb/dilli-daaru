@@ -3,7 +3,7 @@
 }
 
 .productTitle {
-    @apply pb-1.5 leading-6 block text-base sm:text-sm md:text-lg;
+    @apply pb-1.5 leading-6 block text-base sm:text-sm md:text-lg uppercase;
 }
 
 .productCardText {
