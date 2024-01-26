@@ -1,14 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react'
 
 import { ProductCategorySelect } from '@/components'
-import { ProductCategory } from '@/types/enums'
+
+import { ProductCategorySchema } from '../../prisma/generated/zod'
 
 const meta = {
     title: 'Components/ProductCategorySelect',
     component: ProductCategorySelect,
     argTypes: {
         category: {
-            options: ProductCategory,
+            options: ProductCategorySchema.Enum,
             control: { type: 'select' },
         },
     },
