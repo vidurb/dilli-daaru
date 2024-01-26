@@ -116,3 +116,5 @@ package-lock.json
 
 # Sentry Auth Token
 .sentryclirc
+
+build-storybook.log

@@ -1,9 +1,7 @@
-'use client'
-
-import type { ProductCategory } from '@prisma/client'
 import { title } from 'radash'
 
 import styles from '@/styles/product-category-select.module.scss'
+import { ProductCategory } from '@/types/enums'
 
 export function ProductCategorySelect({
     category,

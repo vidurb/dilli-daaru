@@ -1,11 +1,11 @@
 'use client'
 
-import { ProductCategory } from '@prisma/client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { ProductCategorySelect } from '@/components/product-category-select'
 import styles from '@/styles/product-categories.module.css'
+import { ProductCategory } from '@/types/enums'
 
 export default function ProductCategories({
     selectedCategories,

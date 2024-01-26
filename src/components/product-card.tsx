@@ -1,12 +1,11 @@
-'use client'
-
-import { Product, ProductCategory } from '@prisma/client'
+import type { Product } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentProps } from 'react'
 
 import { translator } from '@/lib/uuid'
 import styles from '@/styles/product-card.module.css'
+import { ProductCategory } from '@/types/enums'
 
 import alcopop from '../../public/alcopop.svg'
 import beer from '../../public/beer.svg'
