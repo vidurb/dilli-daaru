@@ -1,7 +1,8 @@
 import { title } from 'radash'
 
 import styles from '@/styles/product-category-select.module.scss'
-import { ProductCategory } from '@/types/enums'
+
+import { ProductCategoryType as ProductCategory } from '../../prisma/generated/zod'
 
 export function ProductCategorySelect({
     category,

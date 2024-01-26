@@ -24,6 +24,10 @@ datasource db {
   extensions = [postgis(version: "3.3.2"), uuid_ossp(map: "uuid-ossp"), pgcrypto()]
 }
 
+generator zod {
+  provider = "zod-prisma-types"
+}
+
 enum ProductType {
   IMPORTED
   INDIAN

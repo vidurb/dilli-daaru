@@ -5,7 +5,11 @@ import { useEffect, useState } from 'react'
 
 import { ProductCategorySelect } from '@/components/product-category-select'
 import styles from '@/styles/product-categories.module.css'
-import { ProductCategory } from '@/types/enums'
+
+import {
+    ProductCategorySchema,
+    ProductCategoryType as ProductCategory,
+} from '../../prisma/generated/zod'
 
 export default function ProductCategories({
     selectedCategories,
@@ -52,83 +56,101 @@ export default function ProductCategories({
         <div className={styles.categoryContainer}>
             <div className={styles.categorySectionTitle}>SOFT</div>
             <ProductCategorySelect
-                category={ProductCategory.WINE}
+                category={ProductCategorySchema.Enum.WINE}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.WINE)}
+                defaultChecked={categories.has(ProductCategorySchema.Enum.WINE)}
             />
             <ProductCategorySelect
-                category={ProductCategory.BEER}
+                category={ProductCategorySchema.Enum.BEER}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.BEER)}
+                defaultChecked={categories.has(ProductCategorySchema.Enum.BEER)}
             />
             <ProductCategorySelect
-                category={ProductCategory.ALCOPOP}
+                category={ProductCategorySchema.Enum.ALCOPOP}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.ALCOPOP)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.ALCOPOP
+                )}
             />
             <ProductCategorySelect
-                category={ProductCategory.CIDER}
+                category={ProductCategorySchema.Enum.CIDER}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.CIDER)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.CIDER
+                )}
             />
             <div className={styles.categorySectionTitle}>HARD</div>
             <ProductCategorySelect
-                category={ProductCategory.GIN}
+                category={ProductCategorySchema.Enum.GIN}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.GIN)}
+                defaultChecked={categories.has(ProductCategorySchema.Enum.GIN)}
             />
             <ProductCategorySelect
-                category={ProductCategory.WHISKEY}
+                category={ProductCategorySchema.Enum.WHISKEY}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.WHISKEY)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.WHISKEY
+                )}
             />
             <ProductCategorySelect
-                category={ProductCategory.VODKA}
+                category={ProductCategorySchema.Enum.VODKA}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.VODKA)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.VODKA
+                )}
             />
             <ProductCategorySelect
-                category={ProductCategory.RUM}
+                category={ProductCategorySchema.Enum.RUM}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.RUM)}
+                defaultChecked={categories.has(ProductCategorySchema.Enum.RUM)}
             />
             <ProductCategorySelect
-                category={ProductCategory.TEQUILA}
+                category={ProductCategorySchema.Enum.TEQUILA}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.TEQUILA)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.TEQUILA
+                )}
             />
             <ProductCategorySelect
-                category={ProductCategory.BRANDY}
+                category={ProductCategorySchema.Enum.BRANDY}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.BRANDY)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.BRANDY
+                )}
             />
             <div className={styles.categorySectionTitle}>OTHER</div>
             <ProductCategorySelect
-                category={ProductCategory.LIQUEUR}
+                category={ProductCategorySchema.Enum.LIQUEUR}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.LIQUEUR)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.LIQUEUR
+                )}
             />
             <ProductCategorySelect
-                category={ProductCategory.OTHER}
+                category={ProductCategorySchema.Enum.OTHER}
                 handleSelect={handleSelect}
                 handleOnlySelect={handleOnlySelect}
-                defaultChecked={categories.has(ProductCategory.OTHER)}
+                defaultChecked={categories.has(
+                    ProductCategorySchema.Enum.OTHER
+                )}
             />
             <button
                 onClick={() => {
                     setCategories(
-                        new Set<ProductCategory>(Object.values(ProductCategory))
+                        new Set<ProductCategory>(
+                            Object.values(ProductCategorySchema.Enum)
+                        )
                     )
                 }}
                 className={styles.categoryButton}

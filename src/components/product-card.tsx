@@ -1,12 +1,16 @@
-import type { Product } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentProps } from 'react'
+import { z } from 'zod'
 
 import { translator } from '@/lib/uuid'
 import styles from '@/styles/product-card.module.css'
-import { ProductCategory } from '@/types/enums'
 
+import { ProductSchema } from '../../prisma/generated/zod'
+import {
+    ProductCategorySchema,
+    ProductCategoryType as ProductCategory,
+} from '../../prisma/generated/zod'
 import alcopop from '../../public/alcopop.svg'
 import beer from '../../public/beer.svg'
 import brandy from '../../public/brandy.svg'
@@ -24,24 +28,25 @@ export const categoryImageMap: Record<
     ProductCategory,
     ComponentProps<typeof Image>['src']
 > = {
-    [ProductCategory.ALCOPOP]: alcopop,
-    [ProductCategory.BEER]: beer,
-    [ProductCategory.BRANDY]: brandy,
-    [ProductCategory.CIDER]: cider,
-    [ProductCategory.OTHER]: other,
-    [ProductCategory.GIN]: gin,
-    [ProductCategory.LIQUEUR]: liqueur,
-    [ProductCategory.RUM]: rum,
-    [ProductCategory.TEQUILA]: tequila,
-    [ProductCategory.VODKA]: vodka,
-    [ProductCategory.WHISKEY]: whiskey,
-    [ProductCategory.WINE]: wine,
+    [ProductCategorySchema.Enum.ALCOPOP]: alcopop,
+    [ProductCategorySchema.Enum.BEER]: beer,
+    [ProductCategorySchema.Enum.BRANDY]: brandy,
+    [ProductCategorySchema.Enum.CIDER]: cider,
+    [ProductCategorySchema.Enum.OTHER]: other,
+    [ProductCategorySchema.Enum.GIN]: gin,
+    [ProductCategorySchema.Enum.LIQUEUR]: liqueur,
+    [ProductCategorySchema.Enum.RUM]: rum,
+    [ProductCategorySchema.Enum.TEQUILA]: tequila,
+    [ProductCategorySchema.Enum.VODKA]: vodka,
+    [ProductCategorySchema.Enum.WHISKEY]: whiskey,
+    [ProductCategorySchema.Enum.WINE]: wine,
 }
 
 export function ProductCard({
     product,
 }: {
-    product: Product & Partial<{ _count: { vendors: number } }>
+    product: z.infer<typeof ProductSchema> &
+        Partial<{ _count: { vendors: number } }>
 }) {
     return (
         <div className={styles.productCard}>
