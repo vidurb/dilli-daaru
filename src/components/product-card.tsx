@@ -1,24 +1,23 @@
-import { Product, Vendor } from '@prisma/client'
-import { ProductCategory } from '@prisma/client'
+import { Product, ProductCategory } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentProps } from 'react'
 
 import { translator } from '@/lib/uuid'
+import styles from '@/styles/product-card.module.css'
 
-import alcopop from '../../../public/alcopop.svg'
-import beer from '../../../public/beer.svg'
-import brandy from '../../../public/brandy.svg'
-import cider from '../../../public/cider.svg'
-import gin from '../../../public/gin.svg'
-import liqueur from '../../../public/liqueur.svg'
-import other from '../../../public/other.svg'
-import rum from '../../../public/rum.svg'
-import tequila from '../../../public/tequila.svg'
-import vodka from '../../../public/vodka.svg'
-import whiskey from '../../../public/whiskey.svg'
-import wine from '../../../public/wine.svg'
-import styles from './daaru.module.scss'
+import alcopop from '../../public/alcopop.svg'
+import beer from '../../public/beer.svg'
+import brandy from '../../public/brandy.svg'
+import cider from '../../public/cider.svg'
+import gin from '../../public/gin.svg'
+import liqueur from '../../public/liqueur.svg'
+import other from '../../public/other.svg'
+import rum from '../../public/rum.svg'
+import tequila from '../../public/tequila.svg'
+import vodka from '../../public/vodka.svg'
+import whiskey from '../../public/whiskey.svg'
+import wine from '../../public/wine.svg'
 
 export const categoryImageMap: Record<
     ProductCategory,
@@ -38,7 +37,7 @@ export const categoryImageMap: Record<
     [ProductCategory.WINE]: wine,
 }
 
-export async function ProductCard({
+export function ProductCard({
     product,
 }: {
     product: Product & Partial<{ _count: { vendors: number } }>

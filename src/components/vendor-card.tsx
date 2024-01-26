@@ -1,14 +1,9 @@
 import Link from 'next/link'
 
-import HomeButton from '@/app/thekas/home-button'
 import VendorLocation from '@/app/thekas/location-button'
+import HomeButton from '@/components/home-button'
 import { ExtendedVendor, translator } from '@/lib'
-
-import styles from './thekas.module.css'
-
-const regex = new RegExp(
-    `POINT\((?<lat>\\d{1,2}\\.\\d+) (?<lng>\\d{1,2}\\.\\d+)\)`
-)
+import styles from '@/styles/vendor-card.module.css'
 
 export async function VendorCard({
     vendor,

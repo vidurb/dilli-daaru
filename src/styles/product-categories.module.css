@@ -1,0 +1,11 @@
+.categoryButton {
+    @apply bg-black text-white border-0 px-4 py-2 rounded font-bold mt-4 mr-2 hover:bg-slate-700 ease-in-out duration-200 hover:-translate-y-2 active:translate-y-1 hidden sm:block;
+}
+
+.categorySectionTitle {
+    @apply font-black border-b-2 border-b-black  mb-2 mt-3 pb-1 hidden sm:block;
+}
+
+.categoryContainer {
+    @apply bg-white p-2 sm:p-12 rounded shadow-md grid grid-cols-3 sm:block w-full sm:w-auto mb-4 sm:mb-0 place-content-evenly;
+}

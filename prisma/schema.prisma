@@ -11,6 +11,12 @@ generator jsonSchema {
   provider = "prisma-json-schema-generator"
 }
 
+generator faker {
+  provider      = "prisma-generator-fake-data"
+  output        = "../src/types/fake-data.ts"
+  emptyValuesAs = "null"
+}
+
 datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")

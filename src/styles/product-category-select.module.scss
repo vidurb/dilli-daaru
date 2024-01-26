@@ -1,0 +1,15 @@
+.category {
+    @apply flex flex-row justify-between;
+
+    & button {
+        @apply opacity-50 hover:underline hidden sm:block;
+    }
+}
+
+.categoryLabel {
+    @apply uppercase;
+
+    & input {
+        @apply mr-2;
+    }
+}

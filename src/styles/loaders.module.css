@@ -1,0 +1,10 @@
+.ticker {
+    @apply uppercase w-full text-2xl bg-ddb text-white flex items-end rotate-[-30];
+}
+
+.tickerText {
+    @apply animate-marquee whitespace-nowrap;
+}
+.tickerLoader {
+    @apply flex flex-col justify-between;
+}

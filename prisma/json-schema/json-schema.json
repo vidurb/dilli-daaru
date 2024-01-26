@@ -1,118 +1,140 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "definitions": {
-        "Vendor": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "externalId": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "address": {
-                    "type": "string"
-                },
-                "productTypes": {
-                    "type": "array",
-                    "enum": ["IMPORTED", "INDIAN", "COUNTRY"]
-                },
-                "entity": {
-                    "type": "string",
-                    "enum": ["DSIIDC", "DCCWS", "DSCSC", "DTTDC"]
-                },
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "products": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Product"
-                    }
-                },
-                "gmapsPlaceId": {
-                    "type": ["string", "null"]
-                }
-            }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Vendor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
         },
-        "Product": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "externalKey": {
-                    "type": "integer"
-                },
-                "externalId": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "image": {
-                    "type": ["string", "null"]
-                },
-                "type": {
-                    "type": "string",
-                    "enum": ["IMPORTED", "INDIAN", "COUNTRY"]
-                },
-                "category": {
-                    "type": "string",
-                    "enum": [
-                        "BEER",
-                        "WINE",
-                        "CIDER",
-                        "ALCOPOP",
-                        "WHISKEY",
-                        "VODKA",
-                        "GIN",
-                        "RUM",
-                        "TEQUILA",
-                        "BRANDY",
-                        "OTHER",
-                        "LIQUEUR"
-                    ]
-                },
-                "mrp": {
-                    "type": "integer"
-                },
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "vendors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Vendor"
-                    }
-                },
-                "vendorsUpdatedAt": {
-                    "type": ["string", "null"],
-                    "format": "date-time"
-                }
-            }
-        }
-    },
-    "type": "object",
-    "properties": {
-        "vendor": {
-            "$ref": "#/definitions/Vendor"
+        "externalId": {
+          "type": "string"
         },
-        "product": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "productTypes": {
+          "type": "array",
+          "enum": [
+            "IMPORTED",
+            "INDIAN",
+            "COUNTRY"
+          ]
+        },
+        "entity": {
+          "type": "string",
+          "enum": [
+            "DSIIDC",
+            "DCCWS",
+            "DSCSC",
+            "DTTDC"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "products": {
+          "type": "array",
+          "items": {
             "$ref": "#/definitions/Product"
+          }
+        },
+        "gmapsPlaceId": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "externalKey": {
+          "type": "integer"
+        },
+        "externalId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "image": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "IMPORTED",
+            "INDIAN",
+            "COUNTRY"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "BEER",
+            "WINE",
+            "CIDER",
+            "ALCOPOP",
+            "WHISKEY",
+            "VODKA",
+            "GIN",
+            "RUM",
+            "TEQUILA",
+            "BRANDY",
+            "OTHER",
+            "LIQUEUR"
+          ]
+        },
+        "mrp": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "vendors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Vendor"
+          }
+        },
+        "vendorsUpdatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
     }
+  },
+  "type": "object",
+  "properties": {
+    "vendor": {
+      "$ref": "#/definitions/Vendor"
+    },
+    "product": {
+      "$ref": "#/definitions/Product"
+    }
+  }
 }

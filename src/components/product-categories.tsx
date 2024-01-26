@@ -1,48 +1,14 @@
-'use client'
-
 import { ProductCategory } from '@prisma/client'
-import Image from 'next/image'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { title } from 'radash'
 import { useEffect, useState } from 'react'
 
-import styles from './daaru.module.scss'
-
-function ProductCategorySelect({
-    category,
-    handleSelect,
-    handleOnlySelect,
-    defaultChecked,
-}: {
-    category: ProductCategory
-    handleSelect: (e: React.ChangeEvent<HTMLInputElement>) => void
-    handleOnlySelect: (category: ProductCategory) => void
-    defaultChecked: boolean
-}) {
-    return (
-        <div className={styles.category}>
-            <label
-                htmlFor={category.toLowerCase()}
-                className={styles.categoryLabel}
-            >
-                <input
-                    type="checkbox"
-                    id={category.toLowerCase()}
-                    value={category}
-                    checked={defaultChecked}
-                    onChange={handleSelect}
-                />
-                {title(category.toLowerCase())}
-            </label>
-            <button onClick={() => handleOnlySelect(category)}>only</button>
-        </div>
-    )
-}
+import { ProductCategorySelect } from '@/components/product-category-select'
+import styles from '@/styles/product-categories.module.css'
 
 export default function ProductCategories({
     selectedCategories,
 }: {
-    selectedCategories: Set<ProductCategory>
+    selectedCategories: Set<ProductCategory> | Array<ProductCategory>
 }) {
     const router = useRouter()
     const pathname = usePathname()
@@ -82,15 +48,6 @@ export default function ProductCategories({
 
     return (
         <div className={styles.categoryContainer}>
-            <div className={styles.categoryLogoContainer}>
-                <Image
-                    src="/dd-logo.svg"
-                    alt="Dilli Daaru"
-                    className={styles.categoryLogo}
-                    fill
-                    priority
-                />
-            </div>
             <div className={styles.categorySectionTitle}>SOFT</div>
             <ProductCategorySelect
                 category={ProductCategory.WINE}

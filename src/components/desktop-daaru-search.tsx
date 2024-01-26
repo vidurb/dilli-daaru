@@ -4,13 +4,12 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import styles from '../styles/search.module.css'
 
-export default function Search({ placeholder }: { placeholder: string }) {
+export function DesktopDaaruSearch() {
     const router = useRouter()
     const pathname = usePathname()
-    const searchParams = useSearchParams()!
+    const searchParams = useSearchParams()
 
     function handleSearch(e: React.KeyboardEvent<HTMLInputElement>) {
-        console.log(pathname)
         if (e.key === 'Enter') {
             const clonedSearchParams = new URLSearchParams(
                 searchParams as unknown as URLSearchParams
@@ -43,7 +42,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 className={styles.search}
                 type="text"
                 id="search"
-                placeholder={placeholder}
+                placeholder={`What's your fix?`}
                 onKeyDown={handleSearch}
             />
         </div>

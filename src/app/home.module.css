@@ -1,3 +1,35 @@
+.header {
+    @apply flex flex-row justify-stretch items-stretch h-[8vh] md:h-[12vh] w-full;
+}
+
+.logo {
+    @apply object-contain w-1/5 relative bg-dd hidden md:flex justify-center items-center;
+}
+
+.search {
+    @apply w-4/5 px-16 bg-dd hidden md:flex justify-center items-center;
+}
+
+.categories {
+    @apply w-1/5 pt-40 hidden md:flex justify-center items-start bg-ddb;
+}
+
+.products {
+    @apply w-4/5 hidden md:grid grid-cols-2 gap-x-4 gap-y-6 p-24 bg-ddb;
+}
+
 .card {
     @apply bg-white p-12 rounded shadow-md text-center text-2xl uppercase w-full max-w-sm dark:bg-slate-900 dark:border-slate-500 dark:border;
+}
+
+.home {
+    @apply flex justify-around flex-col md:flex-row;
+}
+
+.ticker {
+    @apply md:hidden uppercase w-full text-2xl bg-ddb text-white flex items-end;
+}
+
+.tickerText {
+    @apply animate-marquee whitespace-nowrap;
 }

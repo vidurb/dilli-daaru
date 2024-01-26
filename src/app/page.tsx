@@ -1,34 +1,56 @@
-import dynamic from 'next/dynamic'
-import Image from 'next/image'
-import Link from 'next/link'
-import Skeleton from 'react-loading-skeleton'
+import { ProductCategory } from '@prisma/client'
+
+import { ProductCard } from '@/components'
+import {} from '@/components'
+import ProductCategories from '@/components/product-categories'
+import { prisma } from '@/lib'
 
 import styles from './home.module.css'
 
-const DynamicHomeTheka = dynamic(() => import('./home-theka'), {
-    loading: () => <Skeleton className={`w-20 h-4`} />,
-})
+const allCategories = new Set<ProductCategory>(Object.values(ProductCategory))
 
-export default async function Home() {
+export default async function Home({
+    searchParams: { c, s },
+}: {
+    searchParams: { c: ProductCategory[] | ProductCategory; s?: string }
+}) {
+    const search = s ?? ''
+    const qpCategories = new Set<ProductCategory>(
+        Array.isArray(c) ? c : c ? [c] : []
+    )
+    const productCategories =
+        qpCategories.size > 0 ? qpCategories : allCategories
+    const isTouched =
+        productCategories.size !== allCategories.size || search.length > 0
+    const products = await prisma.product.findMany({
+        where: {
+            category: {
+                in: Array.from(productCategories),
+            },
+            ...(s && { name: { search: s } }),
+        },
+        take: 100,
+        include: {
+            _count: {
+                select: { vendors: true },
+            },
+        },
+        orderBy: {
+            vendors: {
+                _count: 'desc',
+            },
+        },
+    })
     return (
-        <main
-            className={`flex min-h-screen flex-col justify-evenly px-2 sm:px-0 items-center`}
-        >
-            <Image
-                src="/dd-logo.svg"
-                alt="Dilli Daaru"
-                className="dark:invert"
-                width={160}
-                height={24}
-                priority
-            />
-            <Link href={`/daaru`} className={styles.card}>
-                Find your fix
-            </Link>
-            <Link href={`/thekas`} className={styles.card}>
-                Check local stock
-            </Link>
-            <DynamicHomeTheka />
+        <main className={styles.home}>
+            <div className={styles.categories}>
+                <ProductCategories selectedCategories={productCategories} />
+            </div>
+            <div className={styles.products}>
+                {products.map((product, index) => (
+                    <ProductCard product={product} key={index} />
+                ))}
+            </div>
         </main>
     )
 }

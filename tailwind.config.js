@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -12,6 +14,22 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        dd: '#FFC700',
+        ddb: '#362929'
+      },
+      animation: {
+        marquee: 'marquee 180s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
+      fontFamily: {
+        sans: ['var(--font-jetbrains-mono)', 'JetBrains Mono', ...defaultTheme.fontFamily.sans],
+      }
     },
   },
   plugins: [],

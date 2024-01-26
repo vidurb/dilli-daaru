@@ -2,9 +2,7 @@ import { ProductCategory } from '@prisma/client'
 import { Suspense } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-import ProductCategories from '@/app/daaru/categories'
-import ProductCard from '@/app/daaru/product-card'
-import Search from '@/components/search'
+import { ProductCard } from '@/components'
 import { prisma } from '@/lib/db'
 
 import styles from './daaru.module.scss'
@@ -50,13 +48,11 @@ export default async function Daaru({
                         <Skeleton className={'w-full h-full'} />
                     </div>
                 }
-            >
-                <ProductCategories selectedCategories={productCategories} />
-            </Suspense>
+            ></Suspense>
             <div className={styles.dataContainer}>
-                <Suspense fallback={<Skeleton className={'h-12 mx-2'} />}>
-                    <Search placeholder={`What's your fix?`} />
-                </Suspense>
+                <Suspense
+                    fallback={<Skeleton className={'h-12 mx-2'} />}
+                ></Suspense>
                 {products.map((product, index) => (
                     <ProductCard product={product} key={index} />
                 ))}

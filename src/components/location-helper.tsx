@@ -3,7 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
-export default function LocationHelper() {
+export function LocationHelper() {
     const router = useRouter()
     const searchParams = useSearchParams()
     const pathname = usePathname()

@@ -4,10 +4,9 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-import ProductCategories from '@/app/daaru/categories'
-import ProductCard from '@/app/daaru/product-card'
-import VendorCard from '@/app/thekas/vendor-card'
-import Search from '@/components/search'
+import { DesktopDaaruSearch, ProductCard } from '@/components'
+import ProductCategories from '@/components/product-categories'
+import VendorCard from '@/components/vendor-card'
 import { prisma } from '@/lib/db'
 import { translator } from '@/lib/uuid'
 
@@ -89,7 +88,7 @@ export default async function Theka({
             <div className="max-w-md mx-auto">
                 <VendorCard vendor={geocodedVendor} showHome={true} />
                 <Suspense fallback={<Skeleton className={'h-12 mx-2'} />}>
-                    <Search placeholder={`What's your fix?`} />
+                    <DesktopDaaruSearch />
                 </Suspense>
                 {products.map((product, index) => (
                     <ProductCard product={product} key={index} />

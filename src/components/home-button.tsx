@@ -1,8 +1,6 @@
-'use client'
+import { useParams, useRouter } from 'next/navigation'
 
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
-
-import { HouseLine } from '@/components'
+import { HouseLine } from '@/components/index'
 
 export default function HomeButton({ id }: { id: string }) {
     const router = useRouter()
@@ -11,6 +9,7 @@ export default function HomeButton({ id }: { id: string }) {
     function setHomeTheka() {
         router.replace(`/select-home?id=${id}`)
     }
+
     if ('uuid' in params) {
         return (
             <HouseLine
