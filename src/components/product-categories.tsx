@@ -1,3 +1,5 @@
+'use client'
+
 import { ProductCategory } from '@prisma/client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'

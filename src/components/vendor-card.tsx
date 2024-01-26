@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 import VendorLocation from '@/app/thekas/location-button'
